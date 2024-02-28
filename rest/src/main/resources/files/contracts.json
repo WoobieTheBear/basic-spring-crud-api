@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "contractWorkload": 80,
+            "salary": 6200,
+            "companyId": 1000,
+            "personId": 10000
+        },
+        {
+            "contractWorkload": 70,
+            "salary": 8200,
+            "companyId": 1001,
+            "personId": 10001
+        },
+        {
+            "contractWorkload": 100,
+            "salary": 7200,
+            "companyId": 1002,
+            "personId": 10002
+        },
+        {
+            "contractWorkload": 100,
+            "salary": 3500,
+            "companyId": 1002,
+            "personId": 10003
+        },
+        {
+            "contractWorkload": 50,
+            "salary": 22000,
+            "companyId": 1003,
+            "personId": 10004
+        },
+        {
+            "contractWorkload": 100,
+            "salary": 10200,
+            "companyId": 1003,
+            "personId": 10005
+        },
+        {
+            "contractWorkload": 50,
+            "salary": 5300,
+            "companyId": 1004,
+            "personId": 10006
+        },
+        {
+            "contractWorkload": 50,
+            "salary": 7300,
+            "companyId": 1005,
+            "personId": 10007
+        },
+        {
+            "contractWorkload": 50,
+            "salary": 7300,
+            "companyId": 1006,
+            "personId": 10008
+        }
+    ]
+}

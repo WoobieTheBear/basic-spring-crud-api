@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "companyName": "Gotham Police Department",
+            "contactEmail": "info@gotham-police.org"
+        },
+        {
+            "companyName": "Gotham Court",
+            "contactEmail": "info@gotham-court.org"
+        },
+        {
+            "companyName": "Wayne Enterprises",
+            "contactEmail": "info@wayne-enterprises.com"
+        },
+        {
+            "companyName": "Gravity Inc.",
+            "contactEmail": "info@gravity.com"
+        },
+        {
+            "companyName": "Gotham Undertakers Ltd",
+            "contactEmail": "booking@gc-undertakers.com"
+        },
+        {
+            "companyName": "Fresh Hat Ltd",
+            "contactEmail": "info@fresh-hat.com"
+        },
+        {
+            "companyName": "Dagget Industries",
+            "contactEmail": "info@dagget.com"
+        }
+    ]
+}
