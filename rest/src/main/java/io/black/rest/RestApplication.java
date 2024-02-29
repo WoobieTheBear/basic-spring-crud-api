@@ -60,7 +60,7 @@ public class RestApplication {
 		}
 		List<Contract> contracts = contractRepository.findAll();
 		if (contracts.isEmpty()){
-			contracts = getContracts();
+			contracts = createContracts();
 			for (Contract contract : contracts) {
 				contractRepository.save(contract);
 				System.out.println("[INFO]: Contract created " + contract);
@@ -76,8 +76,7 @@ public class RestApplication {
                 Person localEntry = new Person(
 					(String) jsonEntry.get("firstName"),
 					(String) jsonEntry.get("lastName"),
-					(String) jsonEntry.get("email"),
-					(String) jsonEntry.get("company")
+					(String) jsonEntry.get("email")
 				);
                 entries.add(localEntry);
             }
@@ -104,7 +103,7 @@ public class RestApplication {
         return entries;
 	}
 
-	private List<Contract> getContracts(){
+	private List<Contract> createContracts(){
         List<Contract> entries = new ArrayList<>();
         try {
             List<LinkedHashMap<String, Object>> data = readTestData("contracts");

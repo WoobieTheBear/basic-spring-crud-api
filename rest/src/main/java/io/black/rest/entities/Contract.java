@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,8 +26,16 @@ public class Contract {
     @Column(name = "company_id")
     private int companyId;
 
+    @ManyToOne
+    @JoinColumn(insertable = false, updatable = false, name = "company_id", referencedColumnName = "id")
+    Company company;
+
     @Column(name = "person_id")
     private int personId;
+
+    @ManyToOne
+    @JoinColumn(insertable = false, updatable = false, name = "person_id", referencedColumnName = "id")
+    Person person;
 
     public Contract() {}
 
@@ -68,12 +78,20 @@ public class Contract {
         this.companyId = companyId;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
     public int getPersonId() {
         return personId;
     }
 
     public void setPersonId(int personId) {
         this.personId = personId;
+    }
+
+    public Person getPerson() {
+        return person;
     }
 
     @Override

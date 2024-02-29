@@ -21,7 +21,6 @@ CREATE TABLE person (
   first_name VARCHAR (63) NOT NULL,
   last_name VARCHAR (63) NOT NULL,
   email VARCHAR (255) UNIQUE NOT NULL,
-  company VARCHAR (255) NOT NULL,
   created_at TIMESTAMP NOT NULL,
   last_login TIMESTAMP
 );
@@ -64,11 +63,11 @@ CREATE TABLE workcontract (
   id BIGSERIAL PRIMARY KEY,
   contract_workload INT NOT NULL,
   salary INT NOT NULL,
-  company_id BIGINT NOT NULL,
   person_id BIGINT NOT NULL,
   CONSTRAINT fk_person
       FOREIGN KEY(person_id) 
         REFERENCES person(id),
+  company_id BIGINT NOT NULL,
   CONSTRAINT fk_company
       FOREIGN KEY(company_id) 
         REFERENCES company(id)

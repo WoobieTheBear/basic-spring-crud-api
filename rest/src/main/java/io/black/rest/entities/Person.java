@@ -14,11 +14,10 @@ import jakarta.persistence.Table;
 @Table(name="person")
 public class Person {
     public Person(){}
-    public Person(String firstName, String lastName, String email, String company){
+    public Person(String firstName, String lastName, String email){
         this.fristName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.company = company;
         Date date = new Date();
         Timestamp now = new Timestamp(date.getTime());
         this.created = (this.created == null) ? now : this.created;
@@ -38,9 +37,6 @@ public class Person {
 
     @Column(name="email")
     private String email;
-
-    @Column(name="company")
-    private String company;
 
     @Column(name="created_at")
     private Timestamp created;
@@ -80,14 +76,6 @@ public class Person {
         this.email = email;
     }
 
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String name) {
-        company = name;
-    }
-
     public Timestamp getCreationstamp() {
         return created;
     }
@@ -105,8 +93,7 @@ public class Person {
     }
     @Override
     public String toString() {
-        return "[id=" + id + ", fristName=" + fristName + ", lastName=" + lastName + ", email=" + email
-                + ", company=" + company + "]";
+        return "[id=" + id + ", fristName=" + fristName + ", lastName=" + lastName + ", email=" + email + "]";
     }
 
 }

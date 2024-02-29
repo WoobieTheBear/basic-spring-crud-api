@@ -3,62 +3,52 @@
         {
             "firstName": "Robert",
             "lastName": "Dickenson",
-            "email": "robert.dickenson@test.com",
-            "company": "Gotham Police Department"
+            "email": "robert.dickenson@test.com"
         },
         {
             "firstName": "Rahel",
             "lastName": "Daws",
-            "email": "katarina.daws@test.com",
-            "company": "Gotham Court"
+            "email": "katarina.daws@test.com"
         },
         {
             "firstName": "Bruce",
             "lastName": "Wayne",
-            "email": "bruce.wayne@wayne-enterprises.com",
-            "company": "Wayne Enterprises"
+            "email": "bruce.wayne@wayne-enterprises.com"
         },
         {
             "firstName": "Thomas",
             "lastName": "Wayne",
-            "email": "thomas.wayne@wayne-enterprises.com",
-            "company": "Wayne Enterprises"
+            "email": "thomas.wayne@wayne-enterprises.com"
         },
         {
             "firstName": "Aline",
             "lastName": "Mezger",
-            "email": "aline.mezger@gravity.com",
-            "company": "Gravity Inc."
+            "email": "aline.mezger@gravity.com"
         },
         {
             "firstName": "Nathaly",
             "lastName": "Gardener",
-            "email": "nathaly.gardener@gravity.com",
-            "company": "Gravity Inc."
+            "email": "nathaly.gardener@gravity.com"
         },
         {
             "firstName": "Alan",
             "lastName": "Newman",
-            "email": "alan.newman@dito.com",
-            "company": "Gotham Undertakers Ltd"
+            "email": "alan.newman@dito.com"
         },
         {
             "firstName": "Nathan",
             "lastName": "Neeson",
-            "email": "n.neeson@hotmail.com",
-            "company": "Fresh Hat Ltd"
+            "email": "n.neeson@hotmail.com"
         },
         {
             "firstName": "Darius",
             "lastName": "Anderson",
-            "email": "darius.anderson@test.com",
-            "company": "Dagget Industries"
+            "email": "darius.anderson@test.com"
         },
         {
             "firstName": "Malcolm",
             "lastName": "Deichsler",
-            "email": "m.deichsler@hotmail.com",
-            "company": "Unenployed"
+            "email": "m.deichsler@hotmail.com"
         }
     ]
 }
