@@ -6,4 +6,9 @@
 4. Give new role right to log in with `ALTER ROLE <role-name> WITH LOGIN;`
 5. Grant privileges to new role with `GRANT CREATE, DROP ON DATABASE <db-name> TO <role-name>;`
 
-Alternately you can run the `setup.sql` script that is slightly more sophisticated with `psql -U postgres -f .\setup.sql`
+
+## SQL setup scripts
+To set up all the tables it is recommended to use the scripts in numeric order.
+
+1. You can open a CLI and navigate to the repo folder to execute `psql -U postgres -f .\01_setup-data.sql`
+2. If the data script was successful you can execute `psql -U postgres -f .\02_setup-security.sql`
