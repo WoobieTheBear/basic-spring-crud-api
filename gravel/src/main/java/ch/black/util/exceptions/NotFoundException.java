@@ -1,4 +1,4 @@
-package ch.black.util;
+package ch.black.util.exceptions;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message){

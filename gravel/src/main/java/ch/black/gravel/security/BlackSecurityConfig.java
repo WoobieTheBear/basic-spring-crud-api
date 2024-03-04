@@ -67,23 +67,23 @@ public class BlackSecurityConfig {
             // this path is completely custom from BlackRestController
             .requestMatchers(HttpMethod.GET, "/test").hasAuthority(""+Role.USER)
             // following paths are handled by the PersonDAO in the background
-            .requestMatchers(HttpMethod.GET, "/people/entries").hasAuthority(""+Role.USER)
-            .requestMatchers(HttpMethod.GET, "/people/entries/**").hasAuthority(""+Role.USER)
-            .requestMatchers(HttpMethod.POST, "/people/entries").hasAuthority(""+Role.POWER)
-            .requestMatchers(HttpMethod.PUT, "/people/entries").hasAuthority(""+Role.POWER)
-            .requestMatchers(HttpMethod.DELETE, "/people/entries/**").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.GET, "/api/people").hasAuthority(""+Role.USER)
+            .requestMatchers(HttpMethod.GET, "/api/people/**").hasAuthority(""+Role.USER)
+            .requestMatchers(HttpMethod.POST, "/api/people").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.PUT, "/api/people").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.DELETE, "/api/people/**").hasAuthority(""+Role.ADMIN)
             // following paths are handled by the CompanyRepository in the background
-            .requestMatchers(HttpMethod.GET, "/companies/entries").hasAuthority(""+Role.USER)
-            .requestMatchers(HttpMethod.GET, "/companies/entries/**").hasAuthority(""+Role.USER)
-            .requestMatchers(HttpMethod.POST, "/companies/entries").hasAuthority(""+Role.POWER)
-            .requestMatchers(HttpMethod.PUT, "/companies/entries").hasAuthority(""+Role.POWER)
-            .requestMatchers(HttpMethod.DELETE, "/companies/entries/**").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.GET, "/api/companies").hasAuthority(""+Role.USER)
+            .requestMatchers(HttpMethod.GET, "/api/companies/**").hasAuthority(""+Role.USER)
+            .requestMatchers(HttpMethod.POST, "/api/companies").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.PUT, "/api/companies").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.DELETE, "/api/companies/**").hasAuthority(""+Role.ADMIN)
             // following paths are automagically created by "spring-boot-starter-data-rest" and annotations
-            .requestMatchers(HttpMethod.GET, "/gravel/workcontracts").hasAuthority(""+Role.USER)
-            .requestMatchers(HttpMethod.GET, "/gravel/workcontracts/**").hasAuthority(""+Role.USER)
-            .requestMatchers(HttpMethod.POST, "/gravel/workcontracts").hasAuthority(""+Role.POWER)
-            .requestMatchers(HttpMethod.PUT, "/gravel/workcontracts/**").hasAuthority(""+Role.POWER)
-            .requestMatchers(HttpMethod.DELETE, "/gravel/workcontracts/**").hasAuthority(""+Role.ADMIN);
+            .requestMatchers(HttpMethod.GET, "/api/workcontracts").hasAuthority(""+Role.USER)
+            .requestMatchers(HttpMethod.GET, "/api/workcontracts/**").hasAuthority(""+Role.USER)
+            .requestMatchers(HttpMethod.POST, "/api/workcontracts").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.PUT, "/api/workcontracts/**").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.DELETE, "/api/workcontracts/**").hasAuthority(""+Role.ADMIN);
         });
 
         // set basic auth

@@ -15,27 +15,27 @@ Authorization: Basic {{user}}
 # –––––––– "/people" endpoints ––––––––
 
 # reads all entries
-GET http://localhost:8837/black/people/entries
+GET http://localhost:8837/black/api/people
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # reads entry by id
-GET http://localhost:8837/black/people/entries/10002
+GET http://localhost:8837/black/api/people/10002
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # trigger out of bounds exception
-GET http://localhost:8837/black/people/entries/5
+GET http://localhost:8837/black/api/people/5
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # trigger generic exception
-GET http://localhost:8837/black/people/entries/ab
+GET http://localhost:8837/black/api/people/ab
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # adds one entry
-POST http://localhost:8837/black/people/entries
+POST http://localhost:8837/black/api/people
 Content-Type: application/json
 Authorization: Basic {{power}}
 
@@ -52,7 +52,7 @@ Authorization: Basic {{power}}
 @personId = 10010
 
 # updates one entry
-PUT http://localhost:8837/black/people/entries
+PUT http://localhost:8837/black/api/people
 Content-Type: application/json
 Authorization: Basic {{power}}
 
@@ -67,7 +67,7 @@ Authorization: Basic {{power}}
 }
 
 # deletes one entry
-DELETE http://localhost:8837/black/people/entries/{{personId}}
+DELETE http://localhost:8837/black/api/people/{{personId}}
 Content-Type: application/json
 Authorization: Basic {{admin}}
 
@@ -76,14 +76,14 @@ Authorization: Basic {{admin}}
 # –––––––– "/companies" endpoints ––––––––
 
 # reads all entries
-GET http://localhost:8837/black/companies/entries
+GET http://localhost:8837/black/api/companies
 Content-Type: application/json
-Authorization: Basic {{credentials}}
+Authorization: Basic {{user}}
 
 # adds one entry
-POST http://localhost:8837/black/companies/entries
+POST http://localhost:8837/black/api/companies
 Content-Type: application/json
-Authorization: Basic {{credentials}}
+Authorization: Basic {{power}}
 
 {
   "id": 0,
@@ -94,14 +94,14 @@ Authorization: Basic {{credentials}}
 @companyId = 1007
 
 # reads entry by id
-GET http://localhost:8837/black/companies/entries/{{companyId}}
+GET http://localhost:8837/black/api/companies/{{companyId}}
 Content-Type: application/json
-Authorization: Basic {{credentials}}
+Authorization: Basic {{power}}
 
 # updates one entry
-PUT http://localhost:8837/black/companies/entries
+PUT http://localhost:8837/black/api/companies
 Content-Type: application/json
-Authorization: Basic {{credentials}}
+Authorization: Basic {{power}}
 
 {
   "id": {{companyId}},
@@ -110,36 +110,36 @@ Authorization: Basic {{credentials}}
 }
 
 # deletes one entry
-DELETE http://localhost:8837/black/companies/entries/{{companyId}}
+DELETE http://localhost:8837/black/api/companies/{{companyId}}
 Content-Type: application/json
-Authorization: Basic {{credentials}}
+Authorization: Basic {{admin}}
 
 
 
 # –––––––– "/workcontracts" endpoints ––––––––
 
 # reads all entries
-GET http://localhost:8837/black/gravel/workcontracts
+GET http://localhost:8837/black/api/workcontracts
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # reads one entry
-GET http://localhost:8837/black/gravel/workcontracts/100008
+GET http://localhost:8837/black/api/workcontracts/100008
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # reads all entries sorted by salary desc
-GET http://localhost:8837/black/gravel/workcontracts?sort=salary,desc
+GET http://localhost:8837/black/api/workcontracts?sort=salary,desc
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # reads all entries page=1 with size=3
-GET http://localhost:8837/black/gravel/workcontracts?page=1&size=3
+GET http://localhost:8837/black/api/workcontracts?page=1&size=3
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # adds one entry
-POST http://localhost:8837/black/gravel/workcontracts
+POST http://localhost:8837/black/api/workcontracts
 Content-Type: application/json
 Authorization: Basic {{power}}
 
@@ -153,7 +153,7 @@ Authorization: Basic {{power}}
 @contractId = 100009
 
 # updates one entry
-PUT http://localhost:8837/black/gravel/workcontracts/{{contractId}}
+PUT http://localhost:8837/black/api/workcontracts/{{contractId}}
 Content-Type: application/json
 Authorization: Basic {{power}}
 
@@ -165,11 +165,11 @@ Authorization: Basic {{power}}
 }
 
 # reads one entry
-GET http://localhost:8837/black/gravel/workcontracts/{{contractId}}
+GET http://localhost:8837/black/api/workcontracts/{{contractId}}
 Content-Type: application/json
 Authorization: Basic {{user}}
 
 # deletes one entry
-DELETE http://localhost:8837/black/gravel/workcontracts/{{contractId}}
+DELETE http://localhost:8837/black/api/workcontracts/{{contractId}}
 Content-Type: application/json
 Authorization: Basic {{admin}}

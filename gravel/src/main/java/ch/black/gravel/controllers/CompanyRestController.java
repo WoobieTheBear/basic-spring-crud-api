@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.black.util.NotFoundException;
-import ch.black.util.PublicResponse;
 import ch.black.gravel.entities.Company;
 import ch.black.gravel.services.CompanyService;
+import ch.black.util.exceptions.NotFoundException;
+import ch.black.util.exceptions.PublicResponse;
 
 @RestController
-@RequestMapping("/companies")
+@RequestMapping("/api")
 public class CompanyRestController {
     private CompanyService companyService;
 
@@ -26,12 +26,12 @@ public class CompanyRestController {
     public CompanyRestController(CompanyService injectedService) {
         this.companyService = injectedService;
     }
-    @GetMapping("/entries")
+    @GetMapping("/companies")
     public List<Company> sendAllEntries(){
         return companyService.findAll();
     }
     
-    @GetMapping("/entries/{entryId}")
+    @GetMapping("/companies/{entryId}")
     public Company sendEntryById(@PathVariable("entryId") int id) {
         Company found = companyService.findById(id);
         if (found == null) {
@@ -40,18 +40,18 @@ public class CompanyRestController {
         return found;
     }
 
-    @PostMapping("/entries")
+    @PostMapping("/companies")
     public Company handleCreate(@RequestBody Company entry) {
         entry.setId(0);
         return companyService.update(entry);
     }
 
-    @PutMapping("/entries")
+    @PutMapping("/companies")
     public Company handleUpdate(@RequestBody Company entry) {
         return companyService.update(entry);
     }
 
-    @DeleteMapping("/entries/{entryId}")
+    @DeleteMapping("/companies/{entryId}")
     public PublicResponse handleDelete(@PathVariable("entryId") int id) {
         Company entry = companyService.findById(id);
         if (entry == null) {

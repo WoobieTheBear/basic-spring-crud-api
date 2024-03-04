@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.black.util.NotFoundException;
-import ch.black.util.PublicResponse;
 import ch.black.gravel.entities.Person;
 import ch.black.gravel.services.PersonService;
+import ch.black.util.exceptions.NotFoundException;
+import ch.black.util.exceptions.PublicResponse;
 
 @RestController
-@RequestMapping("/people")
+@RequestMapping("/api")
 public class PeopleRestController {
     private PersonService personService;
 
@@ -27,12 +27,12 @@ public class PeopleRestController {
         this.personService = injectedPersonService;
     }
     
-    @GetMapping("/entries")
+    @GetMapping("/people")
     public List<Person> sendAllEntries(){
         return personService.findAll();
     }
     
-    @GetMapping("/entries/{entryId}")
+    @GetMapping("/people/{entryId}")
     public Person sendEntryById(@PathVariable("entryId") int id) {
         Person found = personService.findById(id);
         if (found == null) {
@@ -41,18 +41,18 @@ public class PeopleRestController {
         return found;
     }
 
-    @PostMapping("/entries")
+    @PostMapping("/people")
     public Person handleCreate(@RequestBody Person entry) {
         entry.setId(0);
         return personService.update(entry);
     }
 
-    @PutMapping("/entries")
+    @PutMapping("/people")
     public Person handleUpdate(@RequestBody Person entry) {
         return personService.update(entry);
     }
 
-    @DeleteMapping("/entries/{entryId}")
+    @DeleteMapping("/people/{entryId}")
     public PublicResponse handleDelete(@PathVariable("entryId") int id) {
         Person entry = personService.findById(id);
         if (entry == null) {

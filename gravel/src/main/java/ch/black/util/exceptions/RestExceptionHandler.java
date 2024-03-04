@@ -1,4 +1,4 @@
-package ch.black.util;
+package ch.black.util.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
