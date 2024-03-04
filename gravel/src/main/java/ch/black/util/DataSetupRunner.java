@@ -88,10 +88,10 @@ public class DataSetupRunner {
             List<LinkedHashMap<String, Object>> data = readTestData("contracts");
             for (LinkedHashMap<String, Object> jsonEntry : data) {
                 Contract localEntry = new Contract(
-					((BigInteger) jsonEntry.get("contractWorkload")).intValue(),
-					((BigInteger) jsonEntry.get("salary")).intValue(),
-					((BigInteger) jsonEntry.get("companyId")).intValue(),
-					((BigInteger) jsonEntry.get("personId")).intValue()
+					((Integer) jsonEntry.get("contractWorkload")).intValue(),
+					((Integer) jsonEntry.get("salary")).intValue(),
+					((Long) jsonEntry.get("companyId")).longValue(),
+					((Long) jsonEntry.get("personId")).longValue()
 				);
                 entries.add(localEntry);
             }

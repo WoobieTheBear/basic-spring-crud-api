@@ -1,4 +1,5 @@
 :root {
+    --container-width: 64rem;
     --main-bg-color: #222;
     --main-border-color: #efefef;
     --main-font-color: #efefef;
@@ -6,8 +7,21 @@
     --field-border-color: #efefef;
     --field-font-color: #fff;
     --btn-bg-color: #373737;
+    --btn-bg-color-hover: #636363;
     --btn-border-color: #efefef;
     --btn-font-color: #fff;
+    --color-danger: #be2308;
+    --color-danger-hover: #ef4a2d;
+    --color-confirm: #09884f;
+    --color-confirm-hover: #22d585;
+    --color-action: #4b6dbb;
+    --color-action-hover: #7da3fc;
+    --table-bg-color-title: #585858;
+    --table-bg-color-odd: #2a2a2a;
+    --table-bg-color-even: #353535;
+    --grid-vertical-gap: 0.4rem;
+    --grid-horizontal-gap: 0.8rem;
+    --fast: 0.5s;
 }
 
 * {
@@ -26,10 +40,16 @@ body {
     color: var(--main-font-color);
 }
 
+section {
+    margin-bottom: 0.5rem;
+}
+
 input,
 textarea,
 select,
+a.btn,
 button {
+    display: inline-block;
     width: 100%;
     border-radius: 0.5rem;
     padding: 0.3rem 0.7rem 0.5rem 0.7rem;
@@ -44,12 +64,33 @@ textarea {
 
 input[type="button"],
 input[type="submit"],
+a.btn,
 select,
 button {
     cursor: pointer;
-    background-color: var(--btn-bg-color);
     border: 1px solid var(--btn-border-color);
     color: var(--btn-font-color);
+    transition: background-color var(--fast);
+}
+
+input[type="button"],
+a.btn,
+select,
+button {
+    background-color: var(--btn-bg-color);
+}
+
+
+input[type="button"]:hover,
+a.btn:hover,
+select:hover,
+button:hover {
+    background-color: var(--btn-bg-color);
+}
+
+a.btn {
+    text-align: center;
+    text-decoration: none;
 }
 
 input[type="radio"],
@@ -124,6 +165,16 @@ li:before {
     padding-right: 0.4rem;
 }
 
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+div.field-group {
+    column-gap: var(--grid-horizontal-gap);
+}
+
 .col-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -155,7 +206,7 @@ li:before {
 }
 
 .page-container {
-    max-width: 48rem;
+    max-width: var(--container-width);
     min-height: 100vh;
     padding: 0.3rem 1.4rem 0.5rem 1.4rem;
     margin: 0 auto;
@@ -165,6 +216,74 @@ li:before {
 }
 
 .error {
-    color: #be2308;
+    color: var(--color-danger);
     font-family: 'Menlo', 'Monaco', monospace;
+}
+
+a.btn.danger,
+.danger {
+    background-color: var(--color-danger);
+}
+
+a.btn.danger:hover,
+.danger:hover {
+    background-color: var(--color-danger-hover);
+}
+
+a.btn.action,
+.action {
+    background-color: var(--color-action);
+}
+
+a.btn.action:hover,
+.action:hover {
+    background-color: var(--color-action-hover);
+}
+
+a.btn.confirm,
+input[type="submit"],
+.confirm {
+    background-color: var(--color-confirm);
+}
+
+a.btn.confirm:hover,
+input[type="submit"]:hover,
+.confirm:hover {
+    background-color: var(--color-confirm-hover);
+}
+
+.id-grid-4,
+.id-grid-5 {
+    display: grid;
+}
+
+.id-grid-4 {
+    grid-template-columns: 5rem 2fr 1fr 1fr;
+}
+
+.id-grid-5 {
+    grid-template-columns: 5rem 2fr 1fr 1fr 1fr;
+}
+
+.table p,
+.table-header p {
+    margin: 0;
+    padding: 0.4rem 0.8rem 0.6rem 0.8rem;
+    border-right: 1px solid var(--main-bg-color);
+}
+
+.title {
+    background-color: var(--field-bg-color);
+}
+
+.table {
+    background-color: var(--table-bg-color-odd);
+}
+
+.table > div:nth-child(2n) {
+  background-color: var(--table-bg-color-even);
+}
+.table > div > :last-child,
+.table-header > div > :last-child {
+    border-right: none;
 }

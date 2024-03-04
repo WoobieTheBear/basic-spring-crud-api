@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>The Black Page</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+        <script type="module" th:src="@{/js/loader.js}"></script>
+    </head>
+    <body>
+        <div class="page-container">
+            <h1>People Manager</h1>
+            <section>
+                <div class="table-header">
+                    <div class="id-grid-5 title">
+                        <p>ID</p>
+                        <p>E-Mail</p>
+                        <p>First Name</p>
+                        <p>Last Name</p>
+                        <p>Action</p>
+                    </div>
+                </div>
+                <div class="table">
+                    <div class="id-grid-5" th:each="person : ${people}">
+                        <p th:text="${person.getId()}"></p>
+                        <p th:text="${person.getEmail()}"></p>
+                        <p th:text="${person.getFirstName()}"></p>
+                        <p th:text="${person.getLastName()}"></p>
+                        <p class="col-2">
+                            <a class="btn action" th:href="@{/people/form(personId=${person.id})}">update</a>
+                            <a class="btn danger" th:href="@{/people/delete(personId=${person.id})}"
+                                onclick="if (!confirm('Are you sure about that?')) return false">
+                                delete
+                            </a>
+                        </p>
+                    </div>
+                    <div class="id-grid-5">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <p>
+                            <a class="btn confirm" th:href="@{/people/form}">add</a>
+                        </p>
+                    </div>
+                    </div>
+            </section>
+        </div>
+    </body>
+</html>

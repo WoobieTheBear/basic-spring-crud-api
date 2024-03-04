@@ -1,5 +1,8 @@
 package ch.black.gravel.security;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
@@ -35,6 +38,14 @@ public class BlackSecurityConfig {
         }
     }
 
+    private static List<String> DEFAULT_IGNORED = Arrays.asList(
+        "/css/**", 
+        "/js/**",
+        "/images/**", 
+        "/webjars/**", 
+        "/**/favicon.ico"
+    );
+
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource){
         // connecting Jdbc to PostgreSQL-database
@@ -64,6 +75,10 @@ public class BlackSecurityConfig {
         // because there are not enough ominous functions hidden in the spring framework yet
         httpSec.authorizeHttpRequests(configurer -> {
             configurer
+            .requestMatchers(
+                // [TODO]: remove allow all "/**" and change to "/"
+                "/**", "/css/**", "/js/**", "/img/**"
+            ).permitAll()
             // this path is completely custom from BlackRestController
             .requestMatchers(HttpMethod.GET, "/test").hasAuthority(""+Role.USER)
             // following paths are handled by the PersonDAO in the background

@@ -13,7 +13,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="person")
 public class Person {
+
     public Person(){}
+
     public Person(String firstName, String lastName, String email){
         this.fristName = firstName;
         this.lastName = lastName;
@@ -52,19 +54,19 @@ public class Person {
         id = value;
     }
 
-    public String getFirstname() {
+    public String getFirstName() {
         return fristName;
     }
 
-    public void setFirstname(String name) {
+    public void setFirstName(String name) {
         fristName = name;
     }
 
-    public String getLastname() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastname(String name) {
+    public void setLastName(String name) {
         lastName = name;
     }
 

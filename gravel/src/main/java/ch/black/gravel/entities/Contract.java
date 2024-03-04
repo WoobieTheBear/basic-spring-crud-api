@@ -18,20 +18,20 @@ public class Contract {
     private long id;
 
     @Column(name = "contract_workload")
-    private int contractWorkload;
+    private Integer contractWorkload;
 
     @Column(name = "salary")
-    private int salary;
+    private Integer salary;
 
     @Column(name = "company_id")
-    private int companyId;
+    private Long companyId;
 
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false, name = "company_id", referencedColumnName = "id")
     Company company;
 
     @Column(name = "person_id")
-    private int personId;
+    private Long personId;
 
     @ManyToOne
     @JoinColumn(insertable = false, updatable = false, name = "person_id", referencedColumnName = "id")
@@ -39,7 +39,7 @@ public class Contract {
 
     public Contract() {}
 
-    public Contract(int contractWorkload, int salary, int companyId, int personId) {
+    public Contract(Integer contractWorkload, Integer salary, Long companyId, Long personId) {
         this.contractWorkload = contractWorkload;
         this.salary = salary;
         this.companyId = companyId;
@@ -54,27 +54,27 @@ public class Contract {
         this.id = id;
     }
 
-    public int getContractWorkload() {
+    public Integer getContractWorkload() {
         return contractWorkload;
     }
 
-    public void setContractWorkload(int contractWorkload) {
+    public void setContractWorkload(Integer contractWorkload) {
         this.contractWorkload = contractWorkload;
     }
 
-    public int getSalary() {
+    public Integer getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(Integer salary) {
         this.salary = salary;
     }
 
-    public int getCompanyId() {
+    public Long getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Long companyId) {
         this.companyId = companyId;
     }
 
@@ -82,11 +82,11 @@ public class Contract {
         return company;
     }
 
-    public int getPersonId() {
+    public Long getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Long personId) {
         this.personId = personId;
     }
 
