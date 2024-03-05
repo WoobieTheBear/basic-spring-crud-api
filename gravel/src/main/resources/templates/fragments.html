@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>The Black Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+    <script type="module" th:src="@{/js/loader.js}"></script>
+</head>
+
+<body>
+    <nav th:fragment="navigation">
+        <ul class="col-7">
+            <li><a class="action" th:href="@{/}">Main</a></li>
+            <li><a class="action" th:href="@{/people/list}">People</a></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li>
+                <form>
+                    
+                </form>
+                <!-- <a class="action" th:href="@{/logout}">logout</a> -->
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Person Form</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
-        <script type="module" th:src="@{/js/loader.js}"></script>
+    <head th:replace="~{fragments.html :: head}">
+        <title></title>
     </head>
     <body>
         <div class="page-container">
+            <nav th:replace="~{fragments.html :: navigation}"></nav>
             <h1>Add Or Update Person</h1>
             <form action="#" th:action="@{/people/save}" th:object="${person}" method="POST">
                 <input type="hidden" th:field="*{id}" />

@@ -58,9 +58,9 @@ public class BlackSecurityConfig {
 
         // following lines will check the database connection and the default user schema
         UserDetails userDetails = manager.loadUserByUsername("john");
-        System.out.println("user name: " + userDetails.getUsername());
-        System.out.println("user pass: " + userDetails.getPassword());
-        System.out.println("user role: " + userDetails.getAuthorities().iterator().next());
+        System.out.println("BlackSecurityConfig.userDetailsManager() user name: " + userDetails.getUsername());
+        System.out.println("BlackSecurityConfig.userDetailsManager() user pass: " + userDetails.getPassword());
+        System.out.println("BlackSecurityConfig.userDetailsManager() user role: " + userDetails.getAuthorities().iterator().next());
 
         return manager;
     }
@@ -76,11 +76,16 @@ public class BlackSecurityConfig {
         httpSec.authorizeHttpRequests(configurer -> {
             configurer
             .requestMatchers(
-                // [TODO]: remove allow all "/**" and change to "/"
-                "/**", "/css/**", "/js/**", "/img/**"
+                "/", "/css/**", "/js/**", "/img/**"
             ).permitAll()
+            // [START] web paths
+            .requestMatchers(HttpMethod.GET, "/people/list").hasAuthority(""+Role.USER)
+            .requestMatchers(HttpMethod.GET, "/people/form").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.POST, "/people/save").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.GET, "/people/delete").hasAuthority(""+Role.ADMIN)
+            // [START] api paths
             // this path is completely custom from BlackRestController
-            .requestMatchers(HttpMethod.GET, "/test").hasAuthority(""+Role.USER)
+            .requestMatchers(HttpMethod.GET, "/api/test").hasAuthority(""+Role.USER)
             // following paths are handled by the PersonDAO in the background
             .requestMatchers(HttpMethod.GET, "/api/people").hasAuthority(""+Role.USER)
             .requestMatchers(HttpMethod.GET, "/api/people/**").hasAuthority(""+Role.USER)
@@ -99,6 +104,10 @@ public class BlackSecurityConfig {
             .requestMatchers(HttpMethod.POST, "/api/workcontracts").hasAuthority(""+Role.POWER)
             .requestMatchers(HttpMethod.PUT, "/api/workcontracts/**").hasAuthority(""+Role.POWER)
             .requestMatchers(HttpMethod.DELETE, "/api/workcontracts/**").hasAuthority(""+Role.ADMIN);
+        }).formLogin(form -> {
+            form.loginPage("/login")
+            .loginProcessingUrl("/processAuth")
+            .permitAll();
         });
 
         // set basic auth
@@ -107,13 +116,14 @@ public class BlackSecurityConfig {
         // disable csrf cause there is not frontend forms
         httpSec.csrf(csrf -> csrf.disable());
         // disable cors if you have an angular frontend locally
-        // NOTE: in production please read up and configure cors properly
+        // [NOTE]: in production please read up and configure cors properly
         // httpSec.cors(cors -> cors.disable());
 
         return httpSec.build();
     }
 
-    /* // for in memory user management, please do not use this in production
+    /* 
+    // [NOTE]: this is for in memory user management, please do not use this in production
     @Bean
     public InMemoryUserDetailsManager userDetailsManager(){
         UserDetails john = User.builder()

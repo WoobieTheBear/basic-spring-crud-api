@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>The Black Page</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
-        <script type="module" th:src="@{/js/loader.js}"></script>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments.html :: head}">
+        <title></title>
     </head>
     <body>
         <div class="page-container">
+            <nav th:replace="~{fragments.html :: navigation}"></nav>
             <h1>People Manager</h1>
             <section>
                 <div class="table-header">

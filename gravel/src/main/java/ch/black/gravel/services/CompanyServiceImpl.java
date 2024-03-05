@@ -35,12 +35,18 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void save(Company company) {
-        companyRepository.save(company);
+        if (company != null){
+            companyRepository.save(company);
+        }
     }
 
     @Override
     public Company update(Company company) {
-        return companyRepository.save(company);
+        if (company != null) {
+            return companyRepository.save(company);
+        } else {
+            return null;
+        }
     }
 
     @Override
