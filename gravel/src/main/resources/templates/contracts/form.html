@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments.html :: head}">
+        <title></title>
+    </head>
+    <body>
+        <div class="page-container">
+            <nav th:replace="~{fragments.html :: navigation}"></nav>
+            <h1>Add Or Update Contract</h1>
+            <form action="#" th:action="@{/workcontracts/save}" th:object="${entry}" method="POST">
+                <input type="hidden" th:field="*{id}" />
+                <div class="field-group">
+                    <label>PersonId: </label>
+                    <input type="text" th:field="*{personId}" placeholder="person" />
+                </div>
+                <div th:if="${#fields.hasErrors('personId')}" class="field-group">
+                    <span></span>
+                    <span th:errors="*{personId}" class="error"></span>
+                </div>
+                <div class="field-group">
+                    <label>CompanyId: </label>
+                    <input type="text" th:field="*{companyId}" placeholder="company" />
+                </div>
+                <div th:if="${#fields.hasErrors('companyId')}" class="field-group">
+                    <span></span>
+                    <span th:errors="*{companyId}" class="error"></span>
+                </div>
+                <div class="field-group">
+                    <label>Salary: </label>
+                    <span class="number-group">
+                        <input type="number" th:field="*{salary}" placeholder="salary" />
+                    </span>
+                </div>
+                <div th:if="${#fields.hasErrors('salary')}" class="field-group">
+                    <span></span>
+                    <span th:errors="*{salary}" class="error"></span>
+                </div>
+                <div class="field-group">
+                    <label>Workload: </label>
+                    <span class="number-group">
+                        <input type="number" th:field="*{contractWorkload}" placeholder="workload" />
+                    </span>
+                </div>
+                <div th:if="${#fields.hasErrors('contractWorkload')}" class="field-group">
+                    <span></span>
+                    <span th:errors="*{contractWorkload}" class="error"></span>
+                </div>
+                <div class="field-group">
+                    <a class="btn action" th:href="@{/workcontracts/list}"> back</a>
+                    <input class="confirm" type="submit" value="save" />
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

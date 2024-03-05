@@ -16,4 +16,9 @@ public class PublicWebController {
         return "login";
     }
 
+    @GetMapping("/accessDenied")
+    public String accessDenied() {
+        return "access-denied";
+    }
+
 }

@@ -13,15 +13,14 @@
         <ul class="col-7">
             <li><a class="action" th:href="@{/}">Main</a></li>
             <li><a class="action" th:href="@{/people/list}">People</a></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li><a class="action" th:href="@{/companies/list}">Companies</a></li>
+            <li><a class="action" th:href="@{/workcontracts/list}">Contracts</a></li>
+            <li><a class="action" th:href="@{/user/profile}">User</a></li>
             <li></li>
             <li>
-                <form>
-                    
+                <form action="#" th:action="@{/logout}" method="POST">
+                    <input type="submit" class="action" value="logout" />
                 </form>
-                <!-- <a class="action" th:href="@{/logout}">logout</a> -->
             </li>
         </ul>
     </nav>

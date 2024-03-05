@@ -1,7 +1,6 @@
 package ch.black.gravel.security;
 
-import java.util.Arrays;
-import java.util.List;
+import java.lang.reflect.Method;
 
 import javax.sql.DataSource;
 
@@ -10,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
@@ -37,14 +37,6 @@ public class BlackSecurityConfig {
             return this.getValue();
         }
     }
-
-    private static List<String> DEFAULT_IGNORED = Arrays.asList(
-        "/css/**", 
-        "/js/**",
-        "/images/**", 
-        "/webjars/**", 
-        "/**/favicon.ico"
-    );
 
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource){
@@ -76,13 +68,22 @@ public class BlackSecurityConfig {
         httpSec.authorizeHttpRequests(configurer -> {
             configurer
             .requestMatchers(
-                "/", "/css/**", "/js/**", "/img/**"
+                "/", "/accessDenied", "/css/**", "/js/**", "/img/**"
             ).permitAll()
             // [START] web paths
+            .requestMatchers(HttpMethod.GET, "/user/profile").authenticated()
             .requestMatchers(HttpMethod.GET, "/people/list").hasAuthority(""+Role.USER)
-            .requestMatchers(HttpMethod.GET, "/people/form").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.GET, "/people/form/**").hasAuthority(""+Role.POWER)
             .requestMatchers(HttpMethod.POST, "/people/save").hasAuthority(""+Role.POWER)
             .requestMatchers(HttpMethod.GET, "/people/delete").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.GET, "/companies/list").hasAuthority(""+Role.POWER)
+            .requestMatchers(HttpMethod.GET, "/companies/form/**").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.POST, "/companies/save").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.GET, "/companies/delete").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.GET, "/workcontracts/list").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.GET, "/workcontracts/form/**").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.POST, "/workcontracts/save").hasAuthority(""+Role.ADMIN)
+            .requestMatchers(HttpMethod.GET, "/workcontracts/delete").hasAuthority(""+Role.ADMIN)
             // [START] api paths
             // this path is completely custom from BlackRestController
             .requestMatchers(HttpMethod.GET, "/api/test").hasAuthority(""+Role.USER)
@@ -104,11 +105,14 @@ public class BlackSecurityConfig {
             .requestMatchers(HttpMethod.POST, "/api/workcontracts").hasAuthority(""+Role.POWER)
             .requestMatchers(HttpMethod.PUT, "/api/workcontracts/**").hasAuthority(""+Role.POWER)
             .requestMatchers(HttpMethod.DELETE, "/api/workcontracts/**").hasAuthority(""+Role.ADMIN);
-        }).formLogin(form -> {
+        }).exceptionHandling(exceptionHandler -> {
+            exceptionHandler.accessDeniedPage("/accessDenied");
+        })
+        .formLogin(form -> {
             form.loginPage("/login")
             .loginProcessingUrl("/processAuth")
             .permitAll();
-        });
+        }).logout(LogoutConfigurer::permitAll);
 
         // set basic auth
         httpSec.httpBasic(Customizer.withDefaults());

@@ -10,6 +10,8 @@
     --btn-bg-color-hover: #636363;
     --btn-border-color: #efefef;
     --btn-font-color: #fff;
+    --btn-disabled-bg-color: #575757;
+    --btn-disabled-font-color: #9d9d9d;
     --panel-bg-color: #2e2e2e;
     --color-danger: #be2308;
     --color-danger-hover: #ef4a2d;
@@ -54,7 +56,7 @@ button,
 .panel {
     display: inline-block;
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: 0.3rem;
     padding: 0.3rem 0.7rem 0.5rem 0.7rem;
     text-decoration: none;
 }
@@ -85,6 +87,11 @@ button {
     background-color: var(--btn-bg-color);
 }
 
+*:disabled {
+    background-color: var(--btn-disabled-bg-color);
+    background-color: var(--btn-disabled-font-color);
+}
+
 input[type="button"]:hover,
 a.btn:hover,
 select:hover,
@@ -98,12 +105,22 @@ a.btn {
 }
 
 nav ul li {
+    text-indent: 0;
     padding-left: 0;
     text-align: center;
 }
 
 nav ul li:before {
     content: '';
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+nav ul li form,
+nav ul li form input {
+    height: 2.1rem;
 }
 
 input[type="radio"],
@@ -178,6 +195,10 @@ li:before {
     padding-right: 0.4rem;
 }
 
+p {
+    max-width: 34rem;
+}
+
 .col-2,
 .col-3,
 .col-4,
@@ -238,6 +259,15 @@ div.field-group {
     border: 1px solid var(--main-border-color);
 }
 
+.center-panel {
+    max-width: 32rem;
+    margin: 8rem auto;
+    padding: 1rem 1.5rem 1.25rem 1.5rem;
+    border: 1px solid var(--main-border-color);
+    border-radius: 0.3rem;
+    background-color: var(--panel-bg-color);
+}
+
 a.btn.danger,
 .danger {
     background-color: var(--color-danger);
@@ -259,19 +289,20 @@ a.btn.action:hover,
 }
 
 a.btn.confirm,
-input[type="submit"],
+input[type="submit"]:not(input[value="logout"]),
 .confirm {
     background-color: var(--color-confirm);
 }
 
 a.btn.confirm:hover,
-input[type="submit"]:hover,
+input[type="submit"]:not(input[value="logout"]):hover,
 .confirm:hover {
     background-color: var(--color-confirm-hover);
 }
 
 .id-grid-4,
-.id-grid-5 {
+.id-grid-5,
+.id-grid-6 {
     display: grid;
 }
 
@@ -281,6 +312,10 @@ input[type="submit"]:hover,
 
 .id-grid-5 {
     grid-template-columns: 5rem 2fr 1fr 1fr 1fr;
+}
+
+.id-grid-6 {
+    grid-template-columns: 5rem 1fr 1fr 1fr 1fr 1fr;
 }
 
 .table p,
