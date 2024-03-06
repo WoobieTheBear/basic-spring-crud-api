@@ -6,8 +6,8 @@
     <body>
         <div class="page-container">
             <nav th:replace="~{fragments.html :: navigation}"></nav>
-            <h1>Add Or Update Person</h1>
             <section>
+                <h1>Add Or Update Person</h1>
                 <form action="#" th:action="@{/people/save}" th:object="${person}" method="POST">
                     <input type="hidden" th:field="*{id}" />
                     <div class="field-group">

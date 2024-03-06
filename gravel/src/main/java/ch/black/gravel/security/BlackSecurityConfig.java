@@ -1,7 +1,5 @@
 package ch.black.gravel.security;
 
-import java.lang.reflect.Method;
-
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;

@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS auth_entities;
 
 
 -- create the table for users
+-- this table name is referenced in src/main/java/ch/black/gravel/security/BlackSecurityConfig.java
 CREATE TABLE auth_entities (
   entity_name VARCHAR (127) PRIMARY KEY,
   entity_key VARCHAR (255) NOT NULL,
@@ -21,6 +22,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON auth_entities TO tutorial_user
 
 
 -- create the table for the role assignement
+-- this table name is referenced in src/main/java/ch/black/gravel/security/BlackSecurityConfig.java
 CREATE TABLE auth_permissions (
   entity_name VARCHAR (127),
   CONSTRAINT fk_entity_permissions
@@ -36,7 +38,8 @@ CREATE UNIQUE INDEX index_entity_permissions ON auth_permissions (entity_name, p
 GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON auth_permissions TO tutorial_user;
 
 
--- insert some test users [delete if in production]
+
+-- insert some test users [TODO: delete if in production]
 INSERT INTO auth_entities VALUES 
 ('john', '{bcrypt}$2a$12$clB2WSo2VsBynQEfNm9tBecZO1kmTP85DhO7vLod6Hhz16sZvYaAy', 1, TRUE),
 ('mary', '{bcrypt}$2a$12$RIa9VN2983iBgw56ZhaDTuPuY/KkVcSlMEp0kcgq2v/T5KTZ/hety', 1, TRUE),

@@ -6,8 +6,8 @@
     <body>
         <div class="page-container">
             <nav th:replace="~{fragments.html :: navigation}"></nav>
-            <h1>Add Or Update Contract</h1>
             <section>
+                <h1>Add Or Update Contract</h1>
                 <form action="#" th:action="@{/workcontracts/save}" th:object="${entry}" method="POST">
                     <input type="hidden" th:field="*{id}" />
                     <div class="field-group">

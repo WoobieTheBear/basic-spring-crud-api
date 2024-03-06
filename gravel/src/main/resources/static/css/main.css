@@ -45,6 +45,7 @@ body {
 
 section {
     margin-bottom: 0.5rem;
+    padding: 0 2rem;
 }
 
 input:not([data-no-btn]),
@@ -108,6 +109,7 @@ input[data-no-btn] {
     background-color: transparent;
     border: none;
     color: var(--color-action);
+    transition: color var(--fast);
 }
 
 a {
@@ -158,8 +160,8 @@ nav ul li a::after {
 
 nav ul li form:hover::after,
 nav ul li a:hover::after {
-    left: 0;
-    width: 100%;
+    left: 1rem;
+    width: calc( 100% - 2rem );
     background-color: var(--color-action-hover);
 }
 
@@ -244,6 +246,16 @@ p {
     max-width: 34rem;
 }
 
+h1 {
+    font-size: 2rem;
+    margin: 2rem 0 0.8rem 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 0.4rem 0;
+}
+
 .col-2,
 .col-3,
 .col-4,
@@ -287,7 +299,7 @@ div.field-group {
 .page-container {
     max-width: var(--container-width);
     min-height: 100vh;
-    padding: 0.3rem 1.4rem 0.5rem 1.4rem;
+    padding: 0.3rem 0 0.5rem 0;
     margin: 0 auto;
     border: 1px solid var(--main-border-color);
     border-top: none;
@@ -307,7 +319,7 @@ div.field-group {
 .center-panel {
     max-width: 32rem;
     margin: 8rem auto;
-    padding: 1rem 1.5rem 1.25rem 1.5rem;
+    padding: 1rem 1.5rem 0.4rem 1.5rem;
     border: 1px solid var(--main-border-color);
     border-radius: 0.3rem;
     background-color: var(--panel-bg-color);
