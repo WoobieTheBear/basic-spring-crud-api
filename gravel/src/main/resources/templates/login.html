@@ -6,32 +6,34 @@
     <body>
         <div class="page-container">
             <nav th:replace="~{fragments.html :: navigation}"></nav>
-            <div class="center-panel">
-                <form action="#" th:action="@{/processAuth}" method="POST">
-                    <div class="field-group">
-                        <label>User: </label>
-                        <input type="text" name="username" placeholder="user" />
-                    </div>
-                    <div class="field-group">
-                        <label>Password: </label>
-                        <input type="password" name="password" />
-                    </div>
-                    <div class="field-group">
-                        <span></span>
-                        <span class="col-2">
-                            <input type="submit" value="login" />
-                        </span>
-                    </div>
-                    <div th:if="${param.error}" class="field-group">
-                        <span></span>
-                        <span class="error panel">This combination of user name and password does not exist.</span>
-                    </div>
-                    <div th:if="${param.logout}" class="field-group">
-                        <span></span>
-                        <span class="panel">You are logged out.</span>
-                    </div>
-                </form>
-            </div>
+            <section>
+                <div class="center-panel">
+                    <form action="#" th:action="@{/processAuth}" method="POST">
+                        <div class="field-group">
+                            <label>User: </label>
+                            <input type="text" name="username" placeholder="user" />
+                        </div>
+                        <div class="field-group">
+                            <label>Password: </label>
+                            <input type="password" name="password" />
+                        </div>
+                        <div class="field-group">
+                            <span></span>
+                            <span class="col-2">
+                                <input type="submit" value="login" />
+                            </span>
+                        </div>
+                        <div th:if="${param.error}" class="field-group">
+                            <span></span>
+                            <span class="error panel">This combination of user name and password does not exist.</span>
+                        </div>
+                        <div th:if="${param.logout}" class="field-group">
+                            <span></span>
+                            <span class="panel">You are logged out.</span>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </div>
     </body>
 </html>

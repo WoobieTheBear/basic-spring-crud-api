@@ -6,7 +6,7 @@
     <body>
         <div class="page-container">
             <nav th:replace="~{fragments.html :: navigation}"></nav>
-            <h1>Contract Manager</h1>
+            <h1>Company Manager</h1>
             <section>
                 <div class="table-header">
                     <div class="id-grid-4 title">
@@ -22,11 +22,15 @@
                         <p th:text="${entry.getCompanyName()}"></p>
                         <p th:text="${entry.getContactEmail()}"></p>
                         <p class="col-2">
-                            <a class="btn action" th:href="@{/companies/form(companyId=${entry.id})}">update</a>
-                            <a class="btn danger" th:href="@{/companies/delete(companyId=${entry.id})}"
-                                onclick="if (!confirm('Are you sure about that?')) return false">
-                                delete
-                            </a>
+                            <a class="btn action" 
+                                th:href="@{/companies/form(companyId=${entry.id})}"
+                                sec:authorize="hasAuthority('ADMIN')"
+                            >update</a>
+                            <a class="btn danger" 
+                                th:href="@{/companies/delete(companyId=${entry.id})}"
+                                sec:authorize="hasAuthority('ADMIN')"
+                                onclick="if (!confirm('Are you sure about that?')) return false"
+                            >delete</a>
                         </p>
                     </div>
                     <div class="id-grid-4">
@@ -34,10 +38,13 @@
                         <span></span>
                         <span></span>
                         <p>
-                            <a class="btn confirm" th:href="@{/companies/form}">add</a>
+                            <a class="btn confirm" 
+                                th:href="@{/companies/form}"
+                                sec:authorize="hasAuthority('ADMIN')"
+                            >add</a>
                         </p>
                     </div>
-                    </div>
+                </div>
             </section>
         </div>
     </body>

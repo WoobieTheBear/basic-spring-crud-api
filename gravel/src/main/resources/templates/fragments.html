@@ -11,15 +11,25 @@
 <body>
     <nav th:fragment="navigation">
         <ul class="col-7">
-            <li><a class="action" th:href="@{/}">Main</a></li>
-            <li><a class="action" th:href="@{/people/list}">People</a></li>
-            <li><a class="action" th:href="@{/companies/list}">Companies</a></li>
-            <li><a class="action" th:href="@{/workcontracts/list}">Contracts</a></li>
-            <li><a class="action" th:href="@{/user/profile}">User</a></li>
+            <li><a th:href="@{/}">Main</a></li>
+            <li><a th:href="@{/people/list}">People</a></li>
+            <li>
+                <a th:href="@{/companies/list}"
+                    sec:authorize="hasAuthority('POWER')"
+                >Companies</a>
+            </li>
+            <li>
+                <a th:href="@{/workcontracts/list}"
+                    sec:authorize="hasAuthority('ADMIN')"
+                >Contracts</a>
+            </li>
             <li></li>
+            <li><a th:href="@{/user/profile}"
+                    sec:authorize="isAuthenticated()"
+                >User</a></li>
             <li>
                 <form action="#" th:action="@{/logout}" method="POST">
-                    <input type="submit" class="action" value="logout" />
+                    <input type="submit" value="Logout" data-no-btn />
                 </form>
             </li>
         </ul>

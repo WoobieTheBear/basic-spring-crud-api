@@ -6,9 +6,11 @@
     <body>
         <div class="page-container">
             <nav th:replace="~{fragments.html :: navigation}"></nav>
-            <h1>User Profile</h1>
-            <p>User: <span sec:authentication="principal.username"></span></p>
-            <p>Roles: <span sec:authentication="principal.authorities"></span></p>
+            <section>
+                <h1>User Profile</h1>
+                <p>User: <span sec:authentication="principal.username"></span></p>
+                <p>Roles: <span sec:authentication="principal.authorities"></span></p>
+            </section>
         </div>
     </body>
 </html>

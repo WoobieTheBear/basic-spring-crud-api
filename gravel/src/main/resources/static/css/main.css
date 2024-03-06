@@ -47,21 +47,19 @@ section {
     margin-bottom: 0.5rem;
 }
 
-input,
+input:not([data-no-btn]),
 textarea,
 select,
 a.btn,
-nav ul li a,
 button,
 .panel {
     display: inline-block;
     width: 100%;
     border-radius: 0.3rem;
     padding: 0.3rem 0.7rem 0.5rem 0.7rem;
-    text-decoration: none;
 }
 
-input,
+input:not([data-no-btn]),
 textarea {
     background-color: var(--field-bg-color);
     border: 1px solid var(--field-border-color);
@@ -69,11 +67,11 @@ textarea {
 }
 
 input[type="button"],
-input[type="submit"],
+input[type="submit"]:not([data-no-btn]),
 a.btn,
 select,
-nav ul li a,
 button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
     border: 1px solid var(--btn-border-color);
     color: var(--btn-font-color);
@@ -99,23 +97,70 @@ button:hover {
     background-color: var(--btn-bg-color);
 }
 
+input[data-no-btn] {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: normal;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin: 0;
+    padding: 0.3rem 0.7rem 0.5rem 0.7rem;
+    background-color: transparent;
+    border: none;
+    color: var(--color-action);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-action);
+    transition: color var(--fast);
+}
+
+input[data-no-btn]:hover,
+a:hover {
+    color: var(--color-action-hover);
+}
+
 a.btn {
     text-align: center;
     text-decoration: none;
 }
 
+nav {
+    margin: 0.5rem 0 2.5rem 0;
+}
+
 nav ul li {
+    position: relative;
     text-indent: 0;
     padding-left: 0;
     text-align: center;
 }
 
-nav ul li:before {
-    content: '';
-    padding: 0;
-    margin: 0;
-    font-size: 0;
-    line-height: 0;
+nav ul li a {
+    display: inline-block;
+    line-height: 1.8rem;
+    width: 100%;
+    height: 2.1rem;
+}
+
+nav ul li form::after,
+nav ul li a::after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    width: calc( 100% - 4rem );
+    height: 2px;
+    background-color: var(--color-action);
+    transition: background-color var(--fast), width var(--fast), left var(--fast);
+}
+
+nav ul li form:hover::after,
+nav ul li a:hover::after {
+    left: 0;
+    width: 100%;
+    background-color: var(--color-action-hover);
 }
 
 nav ul li form,
@@ -190,7 +235,7 @@ li {
     text-indent: -1em;
 }
 
-li:before {
+li:not(nav ul li):before {
     content: "›";
     padding-right: 0.4rem;
 }
@@ -289,13 +334,13 @@ a.btn.action:hover,
 }
 
 a.btn.confirm,
-input[type="submit"]:not(input[value="logout"]),
+input[type="submit"]:not(input[data-no-btn]),
 .confirm {
     background-color: var(--color-confirm);
 }
 
 a.btn.confirm:hover,
-input[type="submit"]:not(input[value="logout"]):hover,
+input[type="submit"]:not(input[data-no-btn]):hover,
 .confirm:hover {
     background-color: var(--color-confirm-hover);
 }
@@ -336,6 +381,7 @@ input[type="submit"]:not(input[value="logout"]):hover,
 .table > div:nth-child(2n) {
   background-color: var(--table-bg-color-even);
 }
+
 .table > div > :last-child,
 .table-header > div > :last-child {
     border-right: none;
