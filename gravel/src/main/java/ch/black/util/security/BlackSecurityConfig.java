@@ -1,4 +1,4 @@
-package ch.black.gravel.security;
+package ch.black.util.security;
 
 import javax.sql.DataSource;
 
@@ -42,9 +42,10 @@ public class BlackSecurityConfig {
         JdbcUserDetailsManager manager = new JdbcUserDetailsManager(dataSource);
 
         // this will get the user entries from the table "auth_entities"
-        manager.setUsersByUsernameQuery("SELECT entity_name, entity_key, entity_active FROM auth_entities WHERE entity_name = ?");
+        manager.setUsersByUsernameQuery("SELECT entity_name, entity_key, entity_active FROM auth_entity WHERE entity_name = ?");
         // this will get the permission entries from the table "auth_permissions"
-        manager.setAuthoritiesByUsernameQuery("SELECT entity_name, permission_name FROM auth_permissions WHERE entity_name = ?");
+        // manager.setAuthoritiesByUsernameQuery("SELECT entity_name, permission_name FROM auth_permission WHERE entity_name = ?");
+        manager.setAuthoritiesByUsernameQuery("SELECT entity_name, permission_name FROM auth_access_tuple as tuple INNER JOIN auth_entity as entity ON tuple.entity_id = entity.id INNER JOIN auth_permission as perm ON tuple.permission_id = perm.id WHERE entity_name = ?");
 
         // following lines will check the database connection and the default user schema
         UserDetails userDetails = manager.loadUserByUsername("john");

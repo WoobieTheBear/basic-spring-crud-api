@@ -2,53 +2,85 @@
 
 
 -- <START SECURITY SETUP>
-DROP TABLE IF EXISTS auth_permissions;
-DROP TABLE IF EXISTS auth_entities;
+DROP TABLE IF EXISTS auth_access_tuple;
+DROP TABLE IF EXISTS auth_permission;
+DROP TABLE IF EXISTS auth_entity;
 
 
 
 -- create the table for users
 -- this table name is referenced in src/main/java/ch/black/gravel/security/BlackSecurityConfig.java
-CREATE TABLE auth_entities (
-  entity_name VARCHAR (127) PRIMARY KEY,
+CREATE TABLE auth_entity (
+  id BIGSERIAL PRIMARY KEY,
+  entity_name VARCHAR (127),
   entity_key VARCHAR (255) NOT NULL,
   entity_group BIGINT NOT NULL,
   entity_active BOOLEAN NOT NULL
 );
 
 -- Grant necessary permissions for JDBC to access table
-GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON auth_entities TO tutorial_user;
+GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON auth_entity TO tutorial_user;
+
+-- Configure the primary key sequence for company_id_seq
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE auth_entity_id_seq TO tutorial_user;
 
 
 
--- create the table for the role assignement
+-- create the table for the permissions
 -- this table name is referenced in src/main/java/ch/black/gravel/security/BlackSecurityConfig.java
-CREATE TABLE auth_permissions (
-  entity_name VARCHAR (127),
-  CONSTRAINT fk_entity_permissions
-    FOREIGN KEY(entity_name) 
-      REFERENCES auth_entities(entity_name),
-  permission_name VARCHAR (63),
-
-  PRIMARY KEY (entity_name, permission_name)
+CREATE TABLE auth_permission (
+  id BIGSERIAL PRIMARY KEY,
+  permission_name VARCHAR (63)
 );
-CREATE UNIQUE INDEX index_entity_permissions ON auth_permissions (entity_name, permission_name);
 
 -- Grant necessary permissions for JDBC to access table
-GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON auth_permissions TO tutorial_user;
+GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON auth_permission TO tutorial_user;
+
+-- Configure the primary key sequence for company_id_seq
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE auth_permission_id_seq TO tutorial_user;
+
+
+
+-- create the table for the permission assignement
+-- this table name is referenced in src/main/java/ch/black/gravel/security/BlackSecurityConfig.java
+CREATE TABLE auth_access_tuple (
+  entity_id BIGINT NOT NULL,
+  CONSTRAINT fk_auth_entity
+    FOREIGN KEY(entity_id)
+      REFERENCES auth_entity(id)
+      ON DELETE RESTRICT
+      ON UPDATE RESTRICT,
+  permission_id BIGINT NOT NULL,
+  CONSTRAINT fk_auth_permission
+    FOREIGN KEY(permission_id)
+      REFERENCES auth_permission(id)
+      ON DELETE RESTRICT
+      ON UPDATE RESTRICT,
+
+  PRIMARY KEY (entity_id, permission_id)  
+);
+CREATE UNIQUE INDEX index_auth_access_tuple ON auth_access_tuple (entity_id, permission_id);
+
+-- Grant necessary permissions for JDBC to access table
+GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON auth_access_tuple TO tutorial_user;
 
 
 
 -- insert some test users [TODO: delete if in production]
-INSERT INTO auth_entities VALUES 
-('john', '{bcrypt}$2a$12$clB2WSo2VsBynQEfNm9tBecZO1kmTP85DhO7vLod6Hhz16sZvYaAy', 1, TRUE),
-('mary', '{bcrypt}$2a$12$RIa9VN2983iBgw56ZhaDTuPuY/KkVcSlMEp0kcgq2v/T5KTZ/hety', 1, TRUE),
-('susan', '{bcrypt}$2a$12$.V8XWbFUfwNQZz/y7CkBwuEz0w6PoilXnQi2aKoqYNrQNSOvfeUZm', 1, TRUE);
+INSERT INTO auth_entity VALUES 
+(1, 'john', '{bcrypt}$2a$12$clB2WSo2VsBynQEfNm9tBecZO1kmTP85DhO7vLod6Hhz16sZvYaAy', 1, TRUE),
+(2, 'mary', '{bcrypt}$2a$12$RIa9VN2983iBgw56ZhaDTuPuY/KkVcSlMEp0kcgq2v/T5KTZ/hety', 1, TRUE),
+(3, 'susan', '{bcrypt}$2a$12$.V8XWbFUfwNQZz/y7CkBwuEz0w6PoilXnQi2aKoqYNrQNSOvfeUZm', 1, TRUE);
 
-INSERT INTO auth_permissions VALUES 
-('john', 'USER'),
-('mary', 'USER'),
-('mary', 'POWER'),
-('susan', 'USER'),
-('susan', 'ADMIN'),
-('susan', 'POWER');
+INSERT INTO auth_permission VALUES 
+(1, 'USER'),
+(2, 'POWER'),
+(3, 'ADMIN');
+
+INSERT INTO auth_access_tuple VALUES 
+(1, 1),
+(2, 1),
+(2, 2),
+(3, 1),
+(3, 2),
+(3, 3);
