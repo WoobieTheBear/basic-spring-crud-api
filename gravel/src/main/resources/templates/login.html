@@ -21,6 +21,9 @@
                             <span></span>
                             <span class="col-2">
                                 <input type="submit" value="login" />
+                                <a class="btn action" th:href="@{/signup}" >
+                                    signup
+                                </a>
                             </span>
                         </div>
                         <div th:if="${param.error}" class="field-group">

@@ -12,9 +12,10 @@ DROP TABLE IF EXISTS auth_entity;
 -- this table name is referenced in src/main/java/ch/black/gravel/security/BlackSecurityConfig.java
 CREATE TABLE auth_entity (
   id BIGSERIAL PRIMARY KEY,
-  entity_name VARCHAR (127),
+  entity_email VARCHAR (127) NOT NULL,
+  entity_name VARCHAR (127) NOT NULL,
   entity_key VARCHAR (255) NOT NULL,
-  entity_group BIGINT NOT NULL,
+  entity_group BIGINT,
   entity_active BOOLEAN NOT NULL
 );
 
@@ -68,9 +69,9 @@ GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON auth_access_tuple TO tutorial_
 
 -- insert some test users [TODO: delete if in production]
 INSERT INTO auth_entity VALUES 
-(1, 'john', '{bcrypt}$2a$12$clB2WSo2VsBynQEfNm9tBecZO1kmTP85DhO7vLod6Hhz16sZvYaAy', 1, TRUE),
-(2, 'mary', '{bcrypt}$2a$12$RIa9VN2983iBgw56ZhaDTuPuY/KkVcSlMEp0kcgq2v/T5KTZ/hety', 1, TRUE),
-(3, 'susan', '{bcrypt}$2a$12$.V8XWbFUfwNQZz/y7CkBwuEz0w6PoilXnQi2aKoqYNrQNSOvfeUZm', 1, TRUE);
+(1, 'john.doe@doit.com', 'john', '$2a$10$bw1RuI7qANEwCTMgOYHJMOFcL6cSBQnsoG3VhoD3XU6xj4bbliwoq', 1, TRUE),
+(2, 'mary.jane@wantiwant.com', 'mary', '$2a$12$RIa9VN2983iBgw56ZhaDTuPuY/KkVcSlMEp0kcgq2v/T5KTZ/hety', 1, TRUE),
+(3, 'susan.miller@wantiwant.com', 'susan', '$2a$12$.V8XWbFUfwNQZz/y7CkBwuEz0w6PoilXnQi2aKoqYNrQNSOvfeUZm', 1, TRUE);
 
 INSERT INTO auth_permission VALUES 
 (1, 'USER'),
@@ -84,3 +85,7 @@ INSERT INTO auth_access_tuple VALUES
 (3, 1),
 (3, 2),
 (3, 3);
+
+
+-- Following line makes the company_id_seq start at 4
+ALTER SEQUENCE IF EXISTS auth_entity_id_seq RESTART WITH 4;

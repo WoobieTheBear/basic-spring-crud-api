@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name = "AuthPermission")
 @Table(name = "auth_permission")
 public class AuthPermission {
 
@@ -16,14 +16,14 @@ public class AuthPermission {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "permission_name")
+    private String permissionName;
 
     public AuthPermission() {
     }
 
     public AuthPermission(String name) {
-        this.name = name;
+        this.permissionName = name;
     }
 
     public Long getId() {
@@ -34,17 +34,17 @@ public class AuthPermission {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPermissionName() {
+        return permissionName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPermissionName(String name) {
+        this.permissionName = name;
     }
 
     @Override
     public String toString() {
-        return "Role{" + "id=" + id + ", name='" + name + '\'' + '}';
+        return "{ \"id\": \"" + id + "\", \"name\": \"" + permissionName + "\" }";
     }
 
 }

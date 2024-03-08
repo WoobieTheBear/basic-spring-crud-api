@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments.html :: head}">
+        <title></title>
+    </head>
+    <body>
+        <div class="page-container">
+            <nav th:replace="~{fragments.html :: navigation}"></nav>
+            <section>
+                <div class="center-panel">
+                    <p>Sign Up</p>
+                    <form action="#" th:action="@{/processSignup}" th:object="${user}" method="POST">
+                        <div class="field-group">
+                            <label>User: </label>
+                            <input type="text" th:field="*{name}" placeholder="name" />
+                        </div>
+                        <div class="field-group">
+                            <label>E-Mail: </label>
+                            <input type="text" th:field="*{email}" placeholder="email" />
+                        </div>
+                        <div class="field-group">
+                            <label>Password: </label>
+                            <input type="password" th:field="*{password}" />
+                        </div>
+                        <div class="field-group">
+                            <span></span>
+                            <span class="col-2">
+                                <input type="submit" value="signup" />
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

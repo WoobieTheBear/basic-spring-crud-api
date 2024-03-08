@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments.html :: head}">
+        <title></title>
+    </head>
+    <body>
+        <div class="page-container">
+            <nav th:replace="~{fragments.html :: navigation}"></nav>
+            <section>
+                <h1>The Black Page</h1>
+                <p>Welcome on board <span th:text="${user.getName()}"></span>.</p>
+            </section>
+        </div>
+    </body>
+</html>
