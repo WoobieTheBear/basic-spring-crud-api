@@ -1,4 +1,4 @@
-package ch.black.gravel.controllers;
+package ch.black.util.security.auth.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -37,30 +37,30 @@ public class SignupWebController {
     public String showSignupForm(Model model) {
         SignupFormDTO user = new SignupFormDTO();
         model.addAttribute("user", new SignupFormDTO());
-        return "signup/form";
+        return "security/signup-form";
     }
 
     @PostMapping("/processSignup")
     public String processSignup(
 			@Valid @ModelAttribute("user") SignupFormDTO signupDTO,
 			BindingResult result,
-			HttpSession session, Model theModel
+			HttpSession session, Model model
     ) {
 
 		String userName = signupDTO.getName();
 		
         // form validation
 		if (result.hasErrors()){
-			return "signup/form";
+			return "security/signup-form";
 		}
 
 		// check the database if user already exists
         AuthEntity existing = entityService.findByName(userName);
         if (existing != null){
-        	theModel.addAttribute("webUser", new SignupFormDTO());
-			theModel.addAttribute("registrationError", "User name already exists.");
+        	model.addAttribute("user", new SignupFormDTO());
+			model.addAttribute("duplicateError", "User name already exists.");
 
-        	return "signup/form";
+        	return "security/signup-form";
         }
         
         // create user account and store in the databse
@@ -69,7 +69,7 @@ public class SignupWebController {
 		// place user in the web http session for later use
 		session.setAttribute("user", signupDTO);
 
-        return "signup/success";
+        return "security/signup-success";
     }
 
 }

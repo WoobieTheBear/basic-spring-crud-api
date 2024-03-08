@@ -24,8 +24,8 @@ public class RestExceptionHandler {
         if (message.contains("Failed to convert")) {
             message = "Please make sure to use the correct types in your parameters.";
         }
-        if (message.contains("ERROR: duplicate key") && message.contains("email")) {
-            message = "There is already a user registered under this email.";
+        if (message.contains("ERROR: duplicate key")) {
+            message = "There is already an entry using this unique key data (email, username, id, etc.).";
         }
         PublicResponse response = new PublicResponse(
             HttpStatus.BAD_REQUEST.value(),

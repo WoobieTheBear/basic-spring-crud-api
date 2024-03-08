@@ -11,14 +11,4 @@ public class PublicWebController {
         return "home";
     }
 
-    @GetMapping("/login")
-    public String showLoginPage() {
-        return "login";
-    }
-
-    @GetMapping("/accessDenied")
-    public String accessDenied() {
-        return "access-denied";
-    }
-
 }
