@@ -23,7 +23,11 @@
                     sec:authorize="hasAuthority('ADMIN')"
                 >Contracts</a>
             </li>
-            <li></li>
+            <li>
+                <a th:href="@{/people/find}"
+                    sec:authorize="hasAuthority('POWER')"
+                >Find</a>
+            </li>
             <li><a th:href="@{/user/profile}"
                     sec:authorize="isAuthenticated()"
                 >User</a></li>

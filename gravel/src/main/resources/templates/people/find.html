@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments.html :: head}">
+        <title></title>
+    </head>
+    <body>
+        <div class="page-container">
+            <nav th:replace="~{fragments.html :: navigation}"></nav>
+            <section>
+                <h1>Find Secret Idenity</h1>
+                <form action="#" th:action="@{/people/find}" method="GET">
+                    <div class="field-group">
+                        <label>Secret Name: </label>
+                        <input type="text" th:name="search" placeholder="secret name" />
+                    </div>
+                    <div class="field-group">
+                        <a class="btn action" th:href="@{/people/list}">back</a>
+                        <input class="confirm" type="submit" value="find" />
+                    </div>
+                    <div class="field-group">
+                        <span></span>
+                        <div>
+                            <span th:each="person : ${searchResults}" th:text="${person.getFirstName() + ' ' + person.getLastName()}"></span>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </body>
+</html>

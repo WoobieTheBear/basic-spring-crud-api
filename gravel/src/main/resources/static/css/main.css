@@ -216,7 +216,7 @@ span.number-group > .more {
     border-bottom-left-radius: 0;
 }
 
-form > div.field-group {
+form div.field-group {
     margin: 0 0 0.8rem 0;
     display: grid;
     grid-template-columns: 8rem 1fr;

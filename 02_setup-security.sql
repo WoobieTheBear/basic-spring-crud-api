@@ -1,6 +1,15 @@
 \connect tutorial_db;
 
 
+
+-- set up a schema for security
+DROP SCHEMA IF EXISTS black_security;
+CREATE SCHEMA black_security;
+SET search_path TO black_security;
+GRANT CREATE, USAGE ON SCHEMA black_security TO tutorial_user;
+
+
+
 -- <START SECURITY SETUP>
 DROP TABLE IF EXISTS auth_access_tuple;
 DROP TABLE IF EXISTS auth_permission;

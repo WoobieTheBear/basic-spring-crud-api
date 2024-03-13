@@ -8,31 +8,44 @@
             <nav th:replace="~{fragments.html :: navigation}"></nav>
             <section>
                 <h1>Add Or Update Person</h1>
-                <form action="#" th:action="@{/people/save}" th:object="${person}" method="POST">
-                    <input type="hidden" th:field="*{id}" />
-                    <div class="field-group">
-                        <label>E-Mail: </label>
-                        <input type="email" th:field="*{email}" placeholder="email" />
+                <form action="#" th:action="@{/people/save}" method="POST">
+                    <div th:object="${person}">
+                        <input type="hidden" th:field="*{id}" />
+                        <div class="field-group">
+                            <label>E-Mail: </label>
+                            <input type="email" th:field="*{email}" placeholder="email" />
+                        </div>
+                        <div th:if="${#fields.hasErrors('email')}" class="field-group">
+                            <span></span>
+                            <span th:errors="*{email}" class="error"></span>
+                        </div>
+                        <div class="field-group">
+                            <label>Firstname: </label>
+                            <input type="text" th:field="*{firstName}" placeholder="first name" />
+                        </div>
+                        <div th:if="${#fields.hasErrors('firstName')}" class="field-group">
+                            <span></span>
+                            <span th:errors="*{firstName}" class="error"></span>
+                        </div>
+                        <div class="field-group">
+                            <label>Lastname: </label>
+                            <input type="text" th:field="*{lastName}" placeholder="last name" />
+                        </div>
+                        <div th:if="${#fields.hasErrors('lastName')}" class="field-group">
+                            <span></span>
+                            <span th:errors="*{lastName}" class="error"></span>
+                        </div>
                     </div>
-                    <div th:if="${#fields.hasErrors('email')}" class="field-group">
-                        <span></span>
-                        <span th:errors="*{email}" class="error"></span>
-                    </div>
-                    <div class="field-group">
-                        <label>Firstname: </label>
-                        <input type="text" th:field="*{firstName}" placeholder="first name" />
-                    </div>
-                    <div th:if="${#fields.hasErrors('firstName')}" class="field-group">
-                        <span></span>
-                        <span th:errors="*{firstName}" class="error"></span>
-                    </div>
-                    <div class="field-group">
-                        <label>Lastname: </label>
-                        <input type="text" th:field="*{lastName}" placeholder="last name" />
-                    </div>
-                    <div th:if="${#fields.hasErrors('lastName')}" class="field-group">
-                        <span></span>
-                        <span th:errors="*{lastName}" class="error"></span>
+                    <div th:object="${secretIdentity}">
+                        <input type="hidden" th:field="*{id}" />
+                        <div class="field-group">
+                            <label>Secret Identity: </label>
+                            <input type="text" th:field="*{secretName}" placeholder="secret name" />
+                        </div>
+                        <div th:if="${#fields.hasErrors('secretName')}" class="field-group">
+                            <span></span>
+                            <span th:errors="*{secretName}" class="error"></span>
+                        </div>
                     </div>
                     <div class="field-group">
                         <a class="btn action" th:href="@{/people/list}"> back</a>

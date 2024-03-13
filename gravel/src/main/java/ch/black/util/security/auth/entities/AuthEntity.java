@@ -15,7 +15,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity(name = "BlackAuthEntity")
-@Table(name = "auth_entity")
+@Table(name = "auth_entity", schema = "black_security")
 public class AuthEntity {
 
     @Id
@@ -40,6 +40,7 @@ public class AuthEntity {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "auth_access_tuple",
+            schema = "black_security",
             joinColumns = @JoinColumn(name = "entity_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id"))
     private Collection<AuthPermission> permissions;

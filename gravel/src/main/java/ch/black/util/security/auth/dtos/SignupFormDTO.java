@@ -9,7 +9,7 @@ public class SignupFormDTO {
     @NotNull(message = "The email is required")
     @Pattern(
         message = "Please enter a valid email adress",
-        regexp = "^[\\w\\-\\.]+@([\\w-]+\\.)+[\\w-]{2,}$"
+        regexp = "^[\\w\\-\\.]+@([\\w-]+\\.){0,32}+[\\w-]{2,}$"
     )
     private String email;
     

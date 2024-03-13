@@ -1,0 +1,1 @@
+2024-03-13T17:17:25.833+01:00  WARN 18440 --- [http-nio-8837-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.dao.InvalidDataAccessApiUsageException: No EntityManager with actual transaction available for current thread - cannot reliably process 'remove' call]

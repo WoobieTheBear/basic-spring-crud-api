@@ -31,10 +31,18 @@ public class GravelApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(PersonService personService, CompanyService companyService, ContractRepository contractRepository){
+	public CommandLineRunner commandLineRunner(
+			PersonService personService, 
+			CompanyService companyService, 
+			ContractRepository contractRepository
+		){
 		return runner -> {
 			setupRunner = new DataSetupRunner();
-			setupRunner.run(personService, companyService, contractRepository);
+			setupRunner.run(
+				personService, 
+				companyService, 
+				contractRepository
+			);
 		};
 	}
 

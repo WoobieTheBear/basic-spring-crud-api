@@ -1,3 +1,5 @@
+
+-- <START DATABASE CREATION AND SCHEMA SETUP>
 DROP DATABASE IF EXISTS tutorial_db;
 CREATE DATABASE tutorial_db;
 \connect tutorial_db;
@@ -8,13 +10,47 @@ CREATE ROLE tutorial_user WITH PASSWORD 'th3-P455word+f0r-Connection';
 ALTER ROLE tutorial_user WITH LOGIN;
 GRANT CREATE, CONNECT, TEMPORARY ON DATABASE tutorial_db TO tutorial_user;
 
+-- set up a schema for the data
+DROP SCHEMA IF EXISTS black_data;
+CREATE SCHEMA black_data;
+SET search_path TO black_data;
+GRANT CREATE, USAGE ON SCHEMA black_data TO tutorial_user;
+
+
+
 --
 -- Setup tables for app `crud`
 --
 
 
--- <START PERSON SETUP>
+-- <START DROP ALL PREVIOUS DATA>
+DROP TABLE IF EXISTS secret_identity;
 DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS workcontract;
+
+
+
+
+-- <START SECRET_IDENTITY SETUP>
+
+CREATE TABLE secret_identity (
+  id BIGSERIAL PRIMARY KEY,
+  secret_name VARCHAR (63) NOT NULL
+);
+
+-- Grant necessary permissions for JDBC to access table
+GRANT INSERT, UPDATE, SELECT, DELETE, TRUNCATE ON secret_identity TO tutorial_user;
+
+-- Configure the primary key sequence for person_id_seq
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE secret_identity_id_seq TO tutorial_user;
+
+-- Following line makes the person_id_seq start at 20000
+ALTER SEQUENCE IF EXISTS secret_identity_id_seq RESTART WITH 20000;
+
+
+
+-- <START PERSON SETUP>
 
 CREATE TABLE person (
   id BIGSERIAL PRIMARY KEY,
@@ -22,7 +58,12 @@ CREATE TABLE person (
   last_name VARCHAR (63) NOT NULL,
   email VARCHAR (255) UNIQUE NOT NULL,
   created_at TIMESTAMP NOT NULL,
-  last_login TIMESTAMP
+  secret_identity_id BIGINT,
+  CONSTRAINT secret_identity_fk
+    FOREIGN KEY(secret_identity_id)
+      REFERENCES secret_identity(id)
+      ON UPDATE NO ACTION
+      ON DELETE NO ACTION
 );
 
 -- Grant necessary permissions for JDBC to access table
@@ -37,7 +78,6 @@ ALTER SEQUENCE IF EXISTS person_id_seq RESTART WITH 10000;
 
 
 -- <START COMPANY SETUP>
-DROP TABLE IF EXISTS company;
 
 CREATE TABLE company (
   id BIGSERIAL PRIMARY KEY,
@@ -57,7 +97,6 @@ ALTER SEQUENCE IF EXISTS company_id_seq RESTART WITH 1000;
 
 
 -- <START CONTRACT SETUP>
-DROP TABLE IF EXISTS workcontract;
 
 CREATE TABLE workcontract (
   id BIGSERIAL PRIMARY KEY,

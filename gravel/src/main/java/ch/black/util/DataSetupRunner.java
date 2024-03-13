@@ -3,6 +3,7 @@ package ch.black.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -13,13 +14,18 @@ import org.springframework.util.ResourceUtils;
 import ch.black.gravel.entities.Company;
 import ch.black.gravel.entities.Contract;
 import ch.black.gravel.entities.Person;
+import ch.black.gravel.entities.SecretIdentity;
 import ch.black.gravel.repositories.ContractRepository;
 import ch.black.gravel.services.CompanyService;
 import ch.black.gravel.services.PersonService;
 
 public class DataSetupRunner {
 
-    public void run(PersonService personService, CompanyService companyService, ContractRepository contractRepository) {
+    public void run(
+        PersonService personService, 
+        CompanyService companyService, 
+        ContractRepository contractRepository
+    ) {
 		List<Person> people = personService.findAll();
 		if (people.isEmpty()){
 			people = getPeople();
@@ -56,6 +62,13 @@ public class DataSetupRunner {
 					(String) jsonEntry.get("lastName"),
 					(String) jsonEntry.get("email")
 				);
+                LinkedHashMap<String, Object> subEntry = (LinkedHashMap<String, Object>) jsonEntry.get("secretIdentity");
+                if (subEntry != null){
+                    SecretIdentity localIdentity = new SecretIdentity(
+                        (String) subEntry.get("secretName")
+                    );
+                    localEntry.setSecretIdentity(localIdentity);
+                }
                 entries.add(localEntry);
             }
         } catch (Exception e) {
@@ -76,7 +89,7 @@ public class DataSetupRunner {
                 entries.add(localEntry);
             }
         } catch (Exception e) {
-            System.out.println( "getPeople() ERROR: " + e.getMessage());
+            System.out.println( "getCompanies() ERROR: " + e.getMessage());
         }
         return entries;
 	}
@@ -87,15 +100,15 @@ public class DataSetupRunner {
             List<LinkedHashMap<String, Object>> data = readTestData("contracts");
             for (LinkedHashMap<String, Object> jsonEntry : data) {
                 Contract localEntry = new Contract(
-					((Integer) jsonEntry.get("contractWorkload")).intValue(),
-					((Integer) jsonEntry.get("salary")).intValue(),
-					((Long) jsonEntry.get("companyId")).longValue(),
-					((Long) jsonEntry.get("personId")).longValue()
+					((BigInteger) jsonEntry.get("contractWorkload")).intValue(),
+					((BigInteger) jsonEntry.get("salary")).intValue(),
+					((BigInteger) jsonEntry.get("companyId")).longValue(),
+					((BigInteger) jsonEntry.get("personId")).longValue()
 				);
                 entries.add(localEntry);
             }
         } catch (Exception e) {
-            System.out.println( "getPeople() ERROR: " + e.getMessage());
+            System.out.println( "createContracts() ERROR: " + e.getMessage());
         }
         return entries;
 	}

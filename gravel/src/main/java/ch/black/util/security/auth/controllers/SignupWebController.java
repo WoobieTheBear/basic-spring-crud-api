@@ -35,7 +35,6 @@ public class SignupWebController {
 
     @GetMapping("/signup")
     public String showSignupForm(Model model) {
-        SignupFormDTO user = new SignupFormDTO();
         model.addAttribute("user", new SignupFormDTO());
         return "security/signup-form";
     }

@@ -1,19 +1,30 @@
 {
     "data": [
         {
-            "firstName": "Robert",
-            "lastName": "Dickenson",
-            "email": "robert.dickenson@test.com"
+            "firstName": "Dick",
+            "lastName": "Grayson",
+            "email": "dick.grayson@gotham-pd.com",
+            "secretIdentity": {
+                "secretName": "Robin"
+            }
+        },
+        {
+            "firstName": "James",
+            "lastName": "Gordon",
+            "email": "james.gordon@gotham-pd.com"
         },
         {
             "firstName": "Rahel",
             "lastName": "Daws",
-            "email": "katarina.daws@test.com"
+            "email": "rahel.daws@test.com"
         },
         {
             "firstName": "Bruce",
             "lastName": "Wayne",
-            "email": "bruce.wayne@wayne-enterprises.com"
+            "email": "bruce.wayne@wayne-enterprises.com",
+            "secretIdentity": {
+                "secretName": "Bat Man"
+            }
         },
         {
             "firstName": "Thomas",

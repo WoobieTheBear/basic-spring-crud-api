@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity(name = "AuthPermission")
-@Table(name = "auth_permission")
+@Table(name = "auth_permission", schema = "black_security")
 public class AuthPermission {
 
     @Id

@@ -3,28 +3,20 @@ package ch.black.gravel.entities;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import ch.black.gravel.dtos.PersonDTO;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="person")
+@Table(name = "person", schema = "black_data")
 public class Person {
-
-    public Person(){}
-
-    public Person(String firstName, String lastName, String email){
-        this.fristName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        Date date = new Date();
-        Timestamp now = new Timestamp(date.getTime());
-        this.created = (this.created == null) ? now : this.created;
-        this.lastLogin = now;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +24,7 @@ public class Person {
     private long id;
 
     @Column(name="first_name")
-    private String fristName;
+    private String firstName;
 
     @Column(name="last_name")
     private String lastName;
@@ -43,8 +35,29 @@ public class Person {
     @Column(name="created_at")
     private Timestamp created;
 
-    @Column(name="last_login")
-    private Timestamp lastLogin;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "secret_identity_id")
+    private SecretIdentity secretIdentity;
+
+    public Person(){}
+
+    public Person(String firstName, String lastName, String email){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        Timestamp now = new Timestamp(new Date().getTime());
+        this.created = (this.created == null) ? now : this.created;
+    }
+
+    public Person(PersonDTO personDTO) {
+        this.mergeDTO(personDTO);
+    }
+
+    public void mergeDTO(PersonDTO personDTO) {
+        this.firstName = personDTO.getFirstName();
+        this.lastName = personDTO.getLastName();
+        this.email = personDTO.getEmail();
+    }
 
     public long getId() {
         return id;
@@ -55,11 +68,11 @@ public class Person {
     }
 
     public String getFirstName() {
-        return fristName;
+        return firstName;
     }
 
     public void setFirstName(String name) {
-        fristName = name;
+        firstName = name;
     }
 
     public String getLastName() {
@@ -78,24 +91,26 @@ public class Person {
         this.email = email;
     }
 
-    public Timestamp getCreationstamp() {
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreationstamp(Timestamp stamp) {
-        this.created = stamp;
+    public void setCreated(Timestamp created) {
+        this.created = created;
     }
 
-    public Timestamp getLastlogin() {
-        return lastLogin;
+    public SecretIdentity getSecretIdentity() {
+        return secretIdentity;
     }
 
-    public void setLastlogin(Timestamp stamp) {
-        this.lastLogin = stamp;
+    public void setSecretIdentity(SecretIdentity secretIdentity) {
+        this.secretIdentity = secretIdentity;
     }
+
     @Override
     public String toString() {
-        return "[id=" + id + ", fristName=" + fristName + ", lastName=" + lastName + ", email=" + email + "]";
+        return "[id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+                + ", secretIdentity=" + secretIdentity + "]";
     }
 
 }

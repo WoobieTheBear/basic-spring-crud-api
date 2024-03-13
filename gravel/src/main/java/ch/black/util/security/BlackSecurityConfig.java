@@ -64,6 +64,7 @@ public class BlackSecurityConfig {
             ).permitAll()
             // [START] web paths
             .requestMatchers(HttpMethod.GET, "/user/profile").authenticated()
+            .requestMatchers(HttpMethod.GET, "/people/find**").hasAuthority(PermissionName.POWER.get())
             .requestMatchers(HttpMethod.GET, "/people/list").hasAuthority(PermissionName.USER.get())
             .requestMatchers(HttpMethod.GET, "/people/form/**").hasAuthority(PermissionName.POWER.get())
             .requestMatchers(HttpMethod.POST, "/people/save").hasAuthority(PermissionName.POWER.get())
