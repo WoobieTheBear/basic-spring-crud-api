@@ -389,7 +389,8 @@ input[type="submit"]:not(input[data-no-btn]):hover,
 
 .id-grid-4,
 .id-grid-5,
-.id-grid-6 {
+.id-grid-6,
+.id-grid-7 {
     display: grid;
 }
 
@@ -403,6 +404,10 @@ input[type="submit"]:not(input[data-no-btn]):hover,
 
 .id-grid-6 {
     grid-template-columns: 5rem 1fr 1fr 1fr 1fr 1fr;
+}
+
+.id-grid-7 {
+    grid-template-columns: 5rem 2fr 2fr 2fr 1fr 1fr 2fr;
 }
 
 .table p,

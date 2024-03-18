@@ -9,19 +9,21 @@
             <section>
                 <h1>Contract Manager</h1>
                 <div class="table-header">
-                    <div class="id-grid-6 title">
+                    <div class="id-grid-7 title">
                         <p>ID</p>
                         <p>Person</p>
+                        <p>Title</p>
                         <p>Company</p>
-                        <p>Salary [$]</p>
+                        <p>Salary</p>
                         <p>Workload</p>
                         <p>Action</p>
                     </div>
                 </div>
                 <div class="table">
-                    <div class="id-grid-6" th:each="entry : ${entries}">
+                    <div class="id-grid-7" th:each="entry : ${entries}">
                         <p th:text="${entry.getId()}"></p>
                         <p th:text="${entry.getPerson().getFullName()}"></p>
+                        <p th:text="${entry.getTitle()}"></p>
                         <p th:text="${entry.getCompany().getCompanyName()}"></p>
                         <p th:text="${entry.getSalary()}"></p>
                         <p th:text="${entry.getContractWorkload()}"></p>
@@ -33,7 +35,8 @@
                             </a>
                         </p>
                     </div>
-                    <div class="id-grid-6">
+                    <div class="id-grid-7">
+                        <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
