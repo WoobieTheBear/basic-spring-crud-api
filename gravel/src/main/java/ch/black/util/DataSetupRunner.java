@@ -45,7 +45,7 @@ public class DataSetupRunner {
 		}
 		List<Contract> contracts = contractRepository.findAll();
 		if (contracts.isEmpty()){
-			contracts = createContracts();
+			contracts = createContracts(personService, companyService);
 			for (Contract contract : contracts) {
 				contractRepository.save(contract);
 				System.out.println("[INFO]: Contract created " + contract);
@@ -105,17 +105,22 @@ public class DataSetupRunner {
         return entries;
 	}
 
-	private List<Contract> createContracts(){
+	private List<Contract> createContracts(PersonService personService, CompanyService companyService){
         List<Contract> entries = new ArrayList<>();
         try {
             List<LinkedHashMap<String, Object>> data = readTestData("contracts");
             for (LinkedHashMap<String, Object> jsonEntry : data) {
                 Contract localEntry = new Contract(
+                    (String) jsonEntry.get("title"),
 					((BigInteger) jsonEntry.get("contractWorkload")).intValue(),
-					((BigInteger) jsonEntry.get("salary")).intValue(),
-					((BigInteger) jsonEntry.get("companyId")).longValue(),
-					((BigInteger) jsonEntry.get("personId")).longValue()
+					((BigInteger) jsonEntry.get("salary")).intValue()
 				);
+
+                Person person = personService.findById(((BigInteger) jsonEntry.get("personId")).longValue());
+                Company company = companyService.findById(((BigInteger) jsonEntry.get("companyId")).longValue());
+
+                localEntry.setPerson(person);
+                localEntry.setCompany(company);
                 entries.add(localEntry);
             }
         } catch (Exception e) {

@@ -11,53 +11,78 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ch.black.gravel.dtos.ContractDTO;
+import ch.black.gravel.entities.Company;
 import ch.black.gravel.entities.Contract;
+import ch.black.gravel.entities.Person;
 import ch.black.gravel.repositories.ContractRepository;
+import ch.black.gravel.services.CompanyService;
+import ch.black.gravel.services.PersonService;
 
 @Controller
 @RequestMapping("/workcontracts")
 public class ContractWebController {
-    private ContractRepository service;
+    private ContractRepository contractService;
+    private PersonService personService;
+    private CompanyService companyService;
 
-    public ContractWebController(ContractRepository injectedService) {
-        service = injectedService;
+    public ContractWebController(
+        ContractRepository injectedService,
+        PersonService injectedPersonService,
+        CompanyService injectedCompanyService
+    ) {
+        contractService = injectedService;
+        personService = injectedPersonService;
+        companyService = injectedCompanyService;
     }
 
     @GetMapping("/list")
     public String getPeople(Model model) {
-        List<Contract> entries = service.findAll();
+        List<Contract> entries = contractService.findAll();
         model.addAttribute("entries", entries);
         return "contracts/list";
     }
 
     @GetMapping("/form")
     public String upsertPerson(@RequestParam(value = "contractId", required = false) Long contractId, Model model) {
-        Contract entry = null;
+        Contract contract = null;
+        ContractDTO contractDTO = null;
+
         if (contractId != null) {
-            Optional<Contract> result = service.findById(contractId);
+            Optional<Contract> result = contractService.findById(contractId);
             if (result != null) {
-                entry = result.get();
+                contract = result.get();
+                contractDTO = new ContractDTO(contract);
             }
         }
-        if (entry == null) {
-            entry = new Contract();
+        if (contract == null) {
+            contractDTO = new ContractDTO();
         }
-        model.addAttribute("entry", entry);
+        List<Person> people = personService.findAll();
+        List<Company> companies = companyService.findAll();
+        contractDTO.setPeople(people);
+        contractDTO.setCompanies(companies);
+        model.addAttribute("contractDTO", contractDTO);
         return "contracts/form";
     }
 
     @PostMapping("/save")
-    public String savePerson(@ModelAttribute("entry") Contract entry) {
-        if (entry != null){
-            service.save(entry);
-        }
+    public String savePerson(@ModelAttribute("contractDTO") ContractDTO contractDTO) {
+        Contract contract = new Contract(contractDTO);
+        Person person = personService.findById(contractDTO.getPersonId());
+        Company company = companyService.findById(contractDTO.getCompanyId());
+        contract.setCompany(company);
+        contract.setPerson(person);
+
+        contractService.save(contract);
+
         return "redirect:/workcontracts/list";
     }
 
     @GetMapping("/delete")
     public String deletePerson(@RequestParam(value = "contractId", required = false) Long contractId, Model model) {
         if (contractId != null) {
-            service.deleteById(contractId);
+            contractService.deleteById(contractId);
         }
         return "redirect:/workcontracts/list";
     }

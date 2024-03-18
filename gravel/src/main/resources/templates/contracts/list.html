@@ -11,9 +11,9 @@
                 <div class="table-header">
                     <div class="id-grid-6 title">
                         <p>ID</p>
-                        <p>Person ID</p>
-                        <p>Company ID</p>
-                        <p>Salary</p>
+                        <p>Person</p>
+                        <p>Company</p>
+                        <p>Salary [$]</p>
                         <p>Workload</p>
                         <p>Action</p>
                     </div>
@@ -21,8 +21,8 @@
                 <div class="table">
                     <div class="id-grid-6" th:each="entry : ${entries}">
                         <p th:text="${entry.getId()}"></p>
-                        <p th:text="${entry.getPersonId()}"></p>
-                        <p th:text="${entry.getCompanyId()}"></p>
+                        <p th:text="${entry.getPerson().getFullName()}"></p>
+                        <p th:text="${entry.getCompany().getCompanyName()}"></p>
                         <p th:text="${entry.getSalary()}"></p>
                         <p th:text="${entry.getContractWorkload()}"></p>
                         <p class="col-2">

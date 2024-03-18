@@ -139,6 +139,10 @@ public class Person {
         lastName = name;
     }
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     public List<Pet> getPets() {
         return pets;
     }

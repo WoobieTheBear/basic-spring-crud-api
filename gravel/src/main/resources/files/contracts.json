@@ -1,60 +1,70 @@
 {
     "data": [
         {
+            "title": "Police Officer",
             "contractWorkload": 80,
             "salary": 6200,
             "companyId": 1000,
             "personId": 10000
         },
         {
+            "title": "Chief Commissioner",
             "contractWorkload": 70,
             "salary": 8000,
             "companyId": 1000,
             "personId": 10001
         },
         {
+            "title": "Assistant DA",
             "contractWorkload": 70,
             "salary": 8200,
             "companyId": 1001,
             "personId": 10002
         },
         {
+            "title": "Board Of Wayne Enterprises",
             "contractWorkload": 100,
-            "salary": 7200,
+            "salary": 50200,
             "companyId": 1002,
             "personId": 10003
         },
         {
+            "title": "CEO and President of Wayne Enterprises",
             "contractWorkload": 100,
-            "salary": 3500,
+            "salary": 40500,
             "companyId": 1002,
             "personId": 10004
         },
         {
+            "title": "Head Of Development",
             "contractWorkload": 50,
             "salary": 22000,
             "companyId": 1003,
             "personId": 10005
         },
         {
+            "title": "Developer",
             "contractWorkload": 100,
             "salary": 10200,
             "companyId": 1003,
             "personId": 10006
         },
         {
+            "title": "Maintenance Worker",
             "contractWorkload": 50,
             "salary": 5300,
             "companyId": 1004,
             "personId": 10007
         },
         {
+            "title": "Head Of Maintenance",
             "contractWorkload": 50,
             "salary": 7300,
             "companyId": 1005,
             "personId": 10008
         },
         {
+            "title": "Designer",
             "contractWorkload": 50,
             "salary": 7300,
             "companyId": 1006,

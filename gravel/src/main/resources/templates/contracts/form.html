@@ -8,23 +8,43 @@
             <nav th:replace="~{fragments.html :: navigation}"></nav>
             <section>
                 <h1>Add Or Update Contract</h1>
-                <form action="#" th:action="@{/workcontracts/save}" th:object="${entry}" method="POST">
+                <form action="#" th:action="@{/workcontracts/save}" th:object="${contractDTO}" method="POST">
                     <input type="hidden" th:field="*{id}" />
                     <div class="field-group">
-                        <label>PersonId: </label>
-                        <input type="text" th:field="*{personId}" placeholder="person" />
+                        <label>Person: </label>
+                        <div>
+                            <select th:field="*{personId}">
+                                <option th:each="person : ${contractDTO.people}" 
+                                    th:value="${person.getId()}" 
+                                    th:text="${person.getFullName()}"></option>
+                            </select>
+                        </div>
                     </div>
                     <div th:if="${#fields.hasErrors('personId')}" class="field-group">
                         <span></span>
                         <span th:errors="*{personId}" class="error"></span>
                     </div>
                     <div class="field-group">
-                        <label>CompanyId: </label>
-                        <input type="text" th:field="*{companyId}" placeholder="company" />
+                        <label>Company: </label>
+                        <div>
+                            <select th:field="*{companyId}">
+                                <option th:each="company : ${contractDTO.companies}" 
+                                    th:value="${company.getId()}" 
+                                    th:text="${company.getCompanyName()}"></option>
+                            </select>
+                        </div>
                     </div>
                     <div th:if="${#fields.hasErrors('companyId')}" class="field-group">
                         <span></span>
                         <span th:errors="*{companyId}" class="error"></span>
+                    </div>
+                    <div class="field-group">
+                        <label>Job-Title: </label>
+                        <input type="text" th:field="*{title}" placeholder="title" />
+                    </div>
+                    <div th:if="${#fields.hasErrors('title')}" class="field-group">
+                        <span></span>
+                        <span th:errors="*{title}" class="error"></span>
                     </div>
                     <div class="field-group">
                         <label>Salary: </label>
