@@ -14,7 +14,9 @@ public class PersonServiceImpl implements PersonService {
     private PersonDAO personDAO;
 
     @Autowired
-    public PersonServiceImpl(PersonDAO injectedPersonDAO) {
+    public PersonServiceImpl(
+        PersonDAO injectedPersonDAO
+    ) {
         this.personDAO = injectedPersonDAO;
     }
 

@@ -21,7 +21,7 @@ Content-Type: application/json
 Authorization: Basic {{user}}
 
 # reads entry by id
-GET http://localhost:8837/black/api/people/10002
+GET http://localhost:8837/black/api/people/10003
 Content-Type: application/json
 Authorization: Basic {{user}}
 
@@ -42,15 +42,15 @@ Authorization: Basic {{power}}
 
 {
     "id": 0,
+    "lastName": "Anderson",
+    "firstName": "Nicolas",
     "email": "nicolas.anderson@hackerz.com",
-    "company": "Dagget Software Corp",
-    "lastlogin": "2024-02-27T15:10:26.714+00:00",
-    "lastname": "Anderson",
-    "firstname": "Nicolas",
-    "creationstamp": "2024-02-27T15:10:26.714+00:00"
+    "created": "2024-02-27T15:10:26.714+00:00",
+    "secretIdentity": null,
+    "titles": null
 }
 
-@personId = 10010
+@personId = 10014
 
 # updates one entry
 PUT http://localhost:8837/black/api/people
@@ -59,12 +59,12 @@ Authorization: Basic {{power}}
 
 {
     "id": {{personId}},
+    "firstName": "Nicolas Andrew",
+    "lastName": "Anderson Dawson",
     "email": "nicolas.anderson@hackerz.com",
-    "company": "Bat Cave Inc.",
-    "lastlogin": "2024-02-27T15:10:26.714+00:00",
-    "lastname": "Anderson Dawson",
-    "firstname": "Nicolas Andrew",
-    "creationstamp": "2024-02-27T15:10:26.714+00:00"
+    "created": "2024-02-27T15:10:26.714+00:00",
+    "secretIdentity": null,
+    "titles": null
 }
 
 # deletes one entry

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ch.black.gravel.entities.Person;
+import ch.black.gravel.entities.Pet;
 
 @Repository
 public class PersonDAOImpl implements PersonDAO {
@@ -42,11 +43,21 @@ public class PersonDAOImpl implements PersonDAO {
     @Override
     public void delete(long id){
         Person toBedeleted = entityManager.find( Person.class, id);
+        for (Pet title : toBedeleted.getPets()) {
+            /*  [NOTE]: if the referenced dataset is still in use you only set
+                        the back reference to null on the dataset
+                        in this example it would be the person
+                        like in it would be done in the commented line
+            */
+            // title.setPerson(null);
+            entityManager.remove(title);
+        }
         entityManager.remove(toBedeleted);
     }
 
     @Override
     public int deleteMany(String whereColumn, String whereValue){
+        /* this method assumes all references have been deleted */
         String queryString = "DELETE Person WHERE " + whereColumn + " = :whereValue";
         return entityManager.createQuery(
             queryString
@@ -56,6 +67,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public int deleteAll(){
+        /* this method assumes all references have been deleted */
         return entityManager.createQuery("DELETE FROM Person").executeUpdate();
     }
 

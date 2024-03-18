@@ -1,9 +1,12 @@
 package ch.black.gravel.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ch.black.gravel.dtos.SecretIdentityDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,7 +25,12 @@ public class SecretIdentity {
     @Column(name="secret_name")
     private String secretName;
 
-    @OneToOne(mappedBy = "secretIdentity", cascade = {
+    // "mappedBy" targets a property on the Person class
+    @JsonIgnore
+    @OneToOne(
+    mappedBy = "secretIdentity",
+    fetch = FetchType.LAZY,
+    cascade = {
         // this will not delete the Person only the secret identity
         CascadeType.DETACH,
         CascadeType.MERGE,

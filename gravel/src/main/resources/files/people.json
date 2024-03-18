@@ -34,12 +34,20 @@
         {
             "firstName": "Aline",
             "lastName": "Mezger",
-            "email": "aline.mezger@gravity.com"
+            "email": "aline.mezger@gravity.com",
+            "pets": [
+                { "name": "Buddy", "species": "Dog" }
+            ]
         },
         {
             "firstName": "Nathaly",
             "lastName": "Gardener",
-            "email": "nathaly.gardener@gravity.com"
+            "email": "nathaly.gardener@gravity.com",
+            "pets": [
+                { "name": "Alfie", "species": "Dog" },
+                { "name": "Brutus", "species": "Dog" },
+                { "name": "Coco", "species": "Cat" }
+            ]
         },
         {
             "firstName": "Alan",

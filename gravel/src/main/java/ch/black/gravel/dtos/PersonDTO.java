@@ -1,5 +1,7 @@
 package ch.black.gravel.dtos;
 
+import java.util.List;
+
 import ch.black.gravel.entities.Person;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -16,6 +18,8 @@ public class PersonDTO {
 	@NotNull(message = "The last name is required")
 	@Size(min = 3, message = "The last name needs at least 3 characters")
     private String lastName = "";
+
+    private List<String> titles;
 
     @NotNull(message = "The email is required")
     @Pattern(
@@ -63,6 +67,14 @@ public class PersonDTO {
 
     public void setLastName(String name) {
         lastName = name;
+    }
+
+    public List<String> getTitles() {
+        return titles;
+    }
+
+    public void setTitles(List<String> titles) {
+        this.titles = titles;
     }
 
     public String getEmail() {

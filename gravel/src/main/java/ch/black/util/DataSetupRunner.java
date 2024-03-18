@@ -15,6 +15,7 @@ import ch.black.gravel.entities.Company;
 import ch.black.gravel.entities.Contract;
 import ch.black.gravel.entities.Person;
 import ch.black.gravel.entities.SecretIdentity;
+import ch.black.gravel.entities.Pet;
 import ch.black.gravel.repositories.ContractRepository;
 import ch.black.gravel.services.CompanyService;
 import ch.black.gravel.services.PersonService;
@@ -62,12 +63,22 @@ public class DataSetupRunner {
 					(String) jsonEntry.get("lastName"),
 					(String) jsonEntry.get("email")
 				);
-                LinkedHashMap<String, Object> subEntry = (LinkedHashMap<String, Object>) jsonEntry.get("secretIdentity");
-                if (subEntry != null){
+                LinkedHashMap<String, Object> secretIdentityEntry = (LinkedHashMap<String, Object>) jsonEntry.get("secretIdentity");
+                if (secretIdentityEntry != null){
                     SecretIdentity localIdentity = new SecretIdentity(
-                        (String) subEntry.get("secretName")
+                        (String) secretIdentityEntry.get("secretName")
                     );
                     localEntry.setSecretIdentity(localIdentity);
+                }
+                ArrayList<LinkedHashMap<String, Object>> petsEntry = (ArrayList<LinkedHashMap<String, Object>>) jsonEntry.get("pets");
+                if (petsEntry != null){
+                    for (LinkedHashMap<String, Object> petEntry : petsEntry) {
+                        Pet localPet = new Pet(
+                            (String) petEntry.get("name"),
+                            (String) petEntry.get("species")
+                        );
+                        localEntry.addPet(localPet);
+                    }
                 }
                 entries.add(localEntry);
             }

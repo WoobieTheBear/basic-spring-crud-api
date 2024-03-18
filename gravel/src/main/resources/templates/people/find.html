@@ -7,20 +7,37 @@
         <div class="page-container">
             <nav th:replace="~{fragments.html :: navigation}"></nav>
             <section>
-                <h1>Find Secret Idenity</h1>
                 <form action="#" th:action="@{/people/find}" method="GET">
+                    <input type="hidden" th:name="action" value="secretId" />
+                    <h1>Find Person by Secret Idenity</h1>
                     <div class="field-group">
                         <label>Secret Name: </label>
                         <input type="text" th:name="search" placeholder="secret name" />
                     </div>
                     <div class="field-group">
                         <a class="btn action" th:href="@{/people/list}">back</a>
-                        <input class="confirm" type="submit" value="find" />
+                        <span class="col-5">
+                            <input class="confirm" type="submit" value="find" />
+                        </span>
+                    </div>
+                </form>
+                <form action="#" th:action="@{/people/find}" method="GET">
+                    <input type="hidden" th:name="action" value="pets" />
+                    <h1>Find Titles Of Person</h1>
+                    <div class="field-group">
+                        <label>Person Name: </label>
+                        <input type="text" th:name="search" placeholder="secret name" />
+                    </div>
+                    <div class="field-group">
+                        <a class="btn action" th:href="@{/people/list}">back</a>
+                        <span class="col-5">
+                            <input class="confirm" type="submit" value="find" />
+                        </span>
                     </div>
                     <div class="field-group">
                         <span></span>
                         <div>
-                            <span th:each="person : ${searchResults}" th:text="${person.getFirstName() + ' ' + person.getLastName()}"></span>
+                            <span th:each="result : ${searchResults}" th:text="${result.toString()}"></span>
                         </div>
                     </div>
                 </form>

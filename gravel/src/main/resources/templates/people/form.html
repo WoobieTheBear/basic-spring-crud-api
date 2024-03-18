@@ -36,6 +36,25 @@
                             <span th:errors="*{lastName}" class="error"></span>
                         </div>
                     </div>
+                    <div th:object="${petsDTO}">
+                        <div class="field-group">
+                            <label>pets: </label>
+                            <div class="col-5">
+                                <span class="colspan-4"></span>
+                                <button class="action" th:formaction="@{/people/addTitle}">add</button>
+                            </div>
+                        </div>
+                        <div class="field-group" th:each="title, item : *{pets}">
+                            <label></label>
+                            <div class="col-5">
+                                <input type="hidden" th:field="*{pets[__${item.index}__].id}" />
+                                <input class="colspan-2" th:field="*{pets[__${item.index}__].name}" />
+                                <input class="colspan-2" th:field="*{pets[__${item.index}__].species}" />
+                                <button class="danger" th:formaction="@{/people/deleteTitle(index=${item.index})}">delete</button>
+                            </div>
+                            <!-- this line will link the item in the petsDTO.pets list -->
+                        </div>
+                    </div>
                     <div th:object="${secretIdentity}">
                         <input type="hidden" th:field="*{id}" />
                         <div class="field-group">
@@ -49,7 +68,9 @@
                     </div>
                     <div class="field-group">
                         <a class="btn action" th:href="@{/people/list}"> back</a>
-                        <input class="confirm" type="submit" value="save" />
+                        <div class="col-5">
+                            <input class="confirm" type="submit" value="save" />
+                        </div>
                     </div>
                 </form>
             </section>

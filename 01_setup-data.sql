@@ -4,6 +4,7 @@ DROP DATABASE IF EXISTS tutorial_db;
 CREATE DATABASE tutorial_db;
 \connect tutorial_db;
 
+-- set up the role for jdbc called "tutorial_user"
 DROP ROLE IF EXISTS tutorial_user;
 -- [INFO]: this user and password is referenced in ./gravel/src/main/resources/application.properties
 CREATE ROLE tutorial_user WITH PASSWORD 'th3-P455word+f0r-Connection';
@@ -22,17 +23,16 @@ GRANT CREATE, USAGE ON SCHEMA black_data TO tutorial_user;
 -- Setup tables for app `crud`
 --
 
-
 -- <START DROP ALL PREVIOUS DATA>
 DROP TABLE IF EXISTS secret_identity;
+DROP TABLE IF EXISTS pet;
 DROP TABLE IF EXISTS person;
 DROP TABLE IF EXISTS company;
 DROP TABLE IF EXISTS workcontract;
 
 
 
-
--- <START SECRET_IDENTITY SETUP>
+-- <START ONE-TO-ONE SECRET_IDENTITY SETUP>
 
 CREATE TABLE secret_identity (
   id BIGSERIAL PRIMARY KEY,
@@ -74,6 +74,31 @@ GRANT SELECT, UPDATE, USAGE ON SEQUENCE person_id_seq TO tutorial_user;
 
 -- Following line makes the person_id_seq start at 10000
 ALTER SEQUENCE IF EXISTS person_id_seq RESTART WITH 10000;
+
+
+
+-- <START ONE-TO-MANY PET SETUP>
+
+CREATE TABLE pet (
+  id BIGSERIAL PRIMARY KEY,
+  pet_name VARCHAR (255) NOT NULL,
+  species VARCHAR (255) NOT NULL,
+  person_id BIGINT,
+  CONSTRAINT person_fk
+    FOREIGN KEY(person_id)
+      REFERENCES person(id)
+      ON UPDATE NO ACTION
+      ON DELETE NO ACTION
+);
+
+-- Grant necessary permissions for JDBC to access table
+GRANT INSERT, UPDATE, SELECT, DELETE, TRUNCATE ON pet TO tutorial_user;
+
+-- Configure the primary key sequence for person_id_seq
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE pet_id_seq TO tutorial_user;
+
+-- Following line makes the person_id_seq start at 30000
+ALTER SEQUENCE IF EXISTS pet_id_seq RESTART WITH 30000;
 
 
 
