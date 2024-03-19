@@ -1,10 +1,15 @@
 package ch.black.gravel.entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,6 +25,13 @@ public class Company {
 
     @Column(name="contact_email")
     private String contactEmail;
+
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        mappedBy = "company",
+        cascade = CascadeType.ALL
+    )
+    private List<Contract> contracts;
 
     public Company() {}
 

@@ -55,6 +55,13 @@ public class Person {
     })
     private List<Pet> pets;
 
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        mappedBy = "person",
+        cascade = CascadeType.ALL
+    )
+    private List<Contract> contracts;
+
     public Person(){}
 
     public Person(String firstName, String lastName, String email){
