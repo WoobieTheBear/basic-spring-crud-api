@@ -19,6 +19,11 @@ import ch.black.gravel.repositories.ContractRepository;
 import ch.black.gravel.services.CompanyService;
 import ch.black.gravel.services.PersonService;
 
+/*
+ * [NOTE]: there is no ContractRestController since the api
+ *         is provided by the ContractRepository
+ */
+
 @Controller
 @RequestMapping("/workcontracts")
 public class ContractWebController {

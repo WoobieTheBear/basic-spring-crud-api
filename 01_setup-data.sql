@@ -125,14 +125,14 @@ ALTER SEQUENCE IF EXISTS company_id_seq RESTART WITH 1000;
 
 CREATE TABLE workcontract (
   id BIGSERIAL PRIMARY KEY,
-  title VARCHAR (255) UNIQUE NOT NULL,
+  title VARCHAR (255) NOT NULL,
   contract_workload INT NOT NULL,
   salary INT NOT NULL,
-  company_id BIGINT NOT NULL,
-  person_id BIGINT NOT NULL,
+  person_id BIGINT,
   CONSTRAINT fk_person
     FOREIGN KEY(person_id) 
       REFERENCES person(id),
+  company_id BIGINT,
   CONSTRAINT fk_company
     FOREIGN KEY(company_id) 
       REFERENCES company(id)

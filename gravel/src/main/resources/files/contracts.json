@@ -57,14 +57,14 @@
             "personId": 10007
         },
         {
-            "title": "Head Of Maintenance",
+            "title": "Head Of Sales",
             "contractWorkload": 50,
             "salary": 7300,
             "companyId": 1005,
             "personId": 10008
         },
         {
-            "title": "Designer",
+            "title": "Chemist",
             "contractWorkload": 50,
             "salary": 7300,
             "companyId": 1006,

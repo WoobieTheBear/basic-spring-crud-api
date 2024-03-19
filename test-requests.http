@@ -139,16 +139,18 @@ GET http://localhost:8837/black/api/workcontracts?page=1&size=3
 Content-Type: application/json
 Authorization: Basic {{user}}
 
-# adds one entry
+# [NOTE]: this adds one entry but since the endpoint is created automatically
+# via the ContractRepository this will not add company or person
 POST http://localhost:8837/black/api/workcontracts
 Content-Type: application/json
 Authorization: Basic {{power}}
 
 {
-    "contractWorkload": 50,
-    "salary": 7200,
-    "companyId": 1001,
-    "personId": 10001
+  "title": "HR Consultant",
+  "contractWorkload": 50,
+  "salary": 7200,
+  "company": null,
+  "person": null
 }
 
 @contractId = 100009

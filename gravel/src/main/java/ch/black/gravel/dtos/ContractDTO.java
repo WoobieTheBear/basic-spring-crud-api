@@ -29,8 +29,8 @@ public class ContractDTO {
     public ContractDTO(Contract contract) {
         if (contract != null) {
             id = contract.getId();
-            personId = contract.getPerson().getId();
-            companyId = contract.getCompany().getId();
+            personId = (contract.getPerson() != null) ? contract.getPerson().getId() : 0;
+            companyId = (contract.getCompany() != null) ? contract.getCompany().getId() : 0;
             title = contract.getTitle();
             salary = contract.getSalary();
             contractWorkload = contract.getContractWorkload();
