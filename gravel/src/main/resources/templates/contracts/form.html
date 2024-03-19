@@ -59,7 +59,7 @@
                     <div class="field-group">
                         <label>Workload: </label>
                         <span class="number-group">
-                            <input type="number" th:field="*{contractWorkload}" placeholder="workload" />
+                            <input type="number" step="10" th:field="*{contractWorkload}" placeholder="workload" />
                         </span>
                     </div>
                     <div th:if="${#fields.hasErrors('contractWorkload')}" class="field-group">

@@ -1,0 +1,4 @@
+2024-03-19T10:06:54.172+01:00  WARN 10284 --- [http-nio-8837-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23503
+2024-03-19T10:06:54.188+01:00 ERROR 10284 --- [http-nio-8837-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: update or delete on table "person" violates foreign key constraint "fk_person" on table "workcontract"
+  Detail: Key (id)=(10011) is still referenced from table "workcontract".
+2024-03-19T10:06:54.282+01:00  WARN 10284 --- [http-nio-8837-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [ERROR: update or delete on table "person" violates foreign key constraint "fk_person" on table "workcontract"<EOL>  Detail: Key (id)=(10011) is still referenced from table "workcontract".] [delete from black_data.person where id=?]; SQL [delete from black_data.person where id=?]; constraint [fk_person]]
