@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.util.ResourceUtils;
 
@@ -23,6 +25,7 @@ import ch.black.gravel.services.CompanyService;
 import ch.black.gravel.services.PersonService;
 
 public class DataSetupRunner {
+	private static Logger logger = LogManager.getLogger(DataSetupRunner.class);
 
     public void run(
         PersonService personService, 
@@ -30,7 +33,7 @@ public class DataSetupRunner {
         ContractRepository contractRepository,
         ArticleDAO articleDAO
     ) {
-
+        logger.info("action=\"data-setup-started\"");
         addPeople(personService);
         addCompanies(companyService);
         addContracts(personService, companyService, contractRepository);
@@ -43,7 +46,7 @@ public class DataSetupRunner {
 			people = getPeople();
             for (Person person : people) {
 				personService.save(person);
-				System.out.println("[INFO]: Person created " + person);
+				logger.info("Person created " + person);
 			}
 		}
     }
@@ -54,7 +57,7 @@ public class DataSetupRunner {
 			companies = getCompanies();
 			for (Company company : companies) {
 				companyService.save(company);
-				System.out.println("[INFO]: Company created " + company);
+				logger.info("Company created " + company);
 			}
 		}
     }
@@ -69,7 +72,7 @@ public class DataSetupRunner {
 			contracts = setupContracts(personService, companyService);
 			for (Contract contract : contracts) {
 				contractRepository.save(contract);
-				System.out.println("[INFO]: Contract created " + contract);
+				logger.info("Contract created " + contract);
 			}
 		}
     }
@@ -111,7 +114,7 @@ public class DataSetupRunner {
                 entries.add(localEntry);
             }
         } catch (Exception e) {
-            System.out.println( "getPeople() ERROR: " + e.getMessage());
+            logger.error( "getPeople() " + e.getMessage());
         }
         return entries;
 	}
@@ -128,7 +131,7 @@ public class DataSetupRunner {
                 entries.add(localEntry);
             }
         } catch (Exception e) {
-            System.out.println( "getCompanies() ERROR: " + e.getMessage());
+            logger.error( "getCompanies() " + e.getMessage());
         }
         return entries;
 	}
@@ -152,7 +155,7 @@ public class DataSetupRunner {
                 entries.add(localEntry);
             }
         } catch (Exception e) {
-            System.out.println( "createContracts() ERROR: " + e.getMessage());
+            logger.error( "createContracts() " + e.getMessage());
         }
         return entries;
 	}
@@ -176,10 +179,10 @@ public class DataSetupRunner {
                     }
                 }
                 articleDAO.update(persistedEntry);
-				System.out.println("[INFO]: Article created " + persistedEntry);
+				logger.info("Article created " + persistedEntry);
             }
         } catch (Exception e) {
-            System.out.println( "setupArticles() ERROR: " + e.getMessage());
+            logger.error( "setupArticles() " + e.getMessage());
         }
 	}
 
@@ -192,7 +195,7 @@ public class DataSetupRunner {
             LinkedHashMap<String, Object> json = parser.object();
             map = (List<LinkedHashMap<String, Object>>) json.get("data");
         } catch (Exception e) {
-            System.out.println( "readTestData() ERROR: " + e.getMessage());
+            logger.error( "readTestData() " + e.getMessage());
         }
 		return map;
 	}

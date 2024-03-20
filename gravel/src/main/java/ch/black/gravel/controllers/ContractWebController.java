@@ -27,6 +27,7 @@ import ch.black.gravel.services.PersonService;
 @Controller
 @RequestMapping("/workcontracts")
 public class ContractWebController {
+    
     private ContractRepository contractService;
     private PersonService personService;
     private CompanyService companyService;
@@ -55,7 +56,7 @@ public class ContractWebController {
 
         if (contractId != null) {
             Optional<Contract> result = contractService.findById(contractId);
-            if (result != null) {
+            if (result.isPresent()) {
                 contract = result.get();
                 contractDTO = new ContractDTO(contract);
             }

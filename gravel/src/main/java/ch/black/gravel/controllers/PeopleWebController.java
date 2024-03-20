@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.black.gravel.daos.SecretIdentityDAO;
+import ch.black.gravel.GravelApplication;
 import ch.black.gravel.daos.ArticleDAO;
 import ch.black.gravel.daos.PetDAO;
 import ch.black.gravel.dtos.PersonDTO;
@@ -26,11 +29,12 @@ import ch.black.gravel.entities.Person;
 import ch.black.gravel.entities.SecretIdentity;
 import ch.black.gravel.entities.Pet;
 import ch.black.gravel.services.PersonService;
-import ch.black.util.exceptions.NotFoundException;
 
 @Controller
 @RequestMapping("/people")
 public class PeopleWebController {
+	private static Logger logger = LogManager.getLogger(PeopleWebController.class);
+
     private PersonService personService;
     private SecretIdentityDAO secretIdentityDAO;
     private PetDAO petDAO;
@@ -99,7 +103,7 @@ public class PeopleWebController {
                         break;
                 }
             } catch (EmptyResultDataAccessException nfexc) {
-                System.err.println("search: " + search + " throws: " + nfexc.getMessage());
+                logger.error("search=\"" + search + "\" throws=\"" + nfexc.getMessage() + "\"");
                 model.addAttribute("searchResults", Arrays.asList("not found"));
             }
         }

@@ -29,7 +29,7 @@ public class ArticleDAOImpl implements ArticleDAO {
     @Override
     public List<Article> findByAuthor(Person author) {
         
-         // does not work 
+        // [NOTE]: Only works with MEMBER OF not with IN operator
         TypedQuery<Article> query = manager.createQuery(
             "SELECT a FROM Article a "
             + "LEFT JOIN FETCH a.authors "
