@@ -2,9 +2,11 @@ package ch.black.gravel.controllers;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.black.gravel.daos.SecretIdentityDAO;
+import ch.black.gravel.daos.ArticleDAO;
 import ch.black.gravel.daos.PetDAO;
 import ch.black.gravel.dtos.PersonDTO;
 import ch.black.gravel.dtos.SecretIdentityDTO;
 import ch.black.gravel.dtos.PetsDTO;
+import ch.black.gravel.entities.Article;
 import ch.black.gravel.entities.Person;
 import ch.black.gravel.entities.SecretIdentity;
 import ch.black.gravel.entities.Pet;
 import ch.black.gravel.services.PersonService;
+import ch.black.util.exceptions.NotFoundException;
 
 @Controller
 @RequestMapping("/people")
@@ -29,15 +34,18 @@ public class PeopleWebController {
     private PersonService personService;
     private SecretIdentityDAO secretIdentityDAO;
     private PetDAO petDAO;
+    private ArticleDAO articleDAO;
 
     public PeopleWebController(
         PersonService injectedPersonService, 
         SecretIdentityDAO injectedSecretIdentityDAO,
-        PetDAO injectedPetDAO
+        PetDAO injectedPetDAO,
+        ArticleDAO injectedArticleDAO
     ) {
         personService = injectedPersonService;
         secretIdentityDAO = injectedSecretIdentityDAO;
         petDAO = injectedPetDAO;
+        articleDAO = injectedArticleDAO;
     }
 
     @GetMapping("/find")
@@ -50,29 +58,49 @@ public class PeopleWebController {
         model.addAttribute("searchResults", List.of());
 
         if (search != null && !search.isEmpty() && action != null && !action.isEmpty()) {
-            switch (action) {
-                case "secretId":
-                    ArrayList<Person> personResults = new ArrayList<>();
-                    localSearch = search;
-                    List<SecretIdentity> identityResults = secretIdentityDAO.findBySecretName(search);
-                    for (SecretIdentity identity : identityResults) {
-                        if (identity.getPerson() != null) {
-                            personResults.add(identity.getPerson());
+            try {
+                String[] tokens;
+                String firstName, lastName;
+                switch (action) {
+                    case "secretId":
+                        ArrayList<Person> personResults = new ArrayList<>();
+                        localSearch = search;
+                        List<SecretIdentity> identityResults = secretIdentityDAO.findBySecretName(search);
+                        for (SecretIdentity identity : identityResults) {
+                            if (identity.getPerson() != null) {
+                                personResults.add(identity.getPerson());
+                            }
                         }
-                    }
-                    model.addAttribute("searchResults", personResults);
-                    break;
-                case "pets":
-                    localSearch = search;
-                    String[] tokens = search.split("\\s+");
-
-                    String firstName = (tokens.length > 0) ? tokens[0] : "";
-                    String lastName = (tokens.length > 1) ? tokens[1] : "";
-                    List<Pet> petResults = petDAO.findPetsByOwner(firstName, lastName);
-                    model.addAttribute("searchResults", petResults);
-                    break;
-                default:
-                    break;
+                        model.addAttribute("searchResults", personResults);
+                        break;
+                    case "pets":
+                        localSearch = search;
+                        tokens = search.split("\\s+");
+    
+                        firstName = (tokens.length > 0) ? tokens[0] : "";
+                        lastName = (tokens.length > 1) ? tokens[1] : "";
+                        List<Pet> petResults = petDAO.findPetsByOwner(firstName, lastName);
+                        model.addAttribute("searchResults", petResults);
+                        break;
+                    case "articles":
+                        localSearch = search;
+    
+                        tokens = search.split("\\s+");
+    
+                        firstName = (tokens.length > 0) ? tokens[0] : "";
+                        lastName = (tokens.length > 1) ? tokens[1] : "";
+                        Person author = personService.findByFullName(firstName, lastName);
+                        if (author != null) {
+                            List<Article> articleResults = articleDAO.findByAuthor(author);
+                            model.addAttribute("searchResults", articleResults);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            } catch (EmptyResultDataAccessException nfexc) {
+                System.err.println("search: " + search + " throws: " + nfexc.getMessage());
+                model.addAttribute("searchResults", Arrays.asList("not found"));
             }
         }
 

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import ch.black.gravel.dtos.PersonDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -14,6 +16,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -55,12 +59,29 @@ public class Person {
     })
     private List<Pet> pets;
 
+    @JsonIgnore
     @OneToMany(
         fetch = FetchType.LAZY,
         mappedBy = "person",
         cascade = CascadeType.ALL
     )
     private List<Contract> contracts;
+
+    @ManyToMany(
+    fetch = FetchType.LAZY,
+    cascade = {
+        CascadeType.DETACH,
+        CascadeType.MERGE,
+        CascadeType.PERSIST,
+        CascadeType.REFRESH
+    })
+    @JoinTable(
+        name = "join_author_article",
+        schema = "black_data",
+        joinColumns = @JoinColumn(name = "person_id"),
+        inverseJoinColumns = @JoinColumn(name = "article_id")
+    )
+    private List<Article> articles;
 
     public Person(){}
 
@@ -182,10 +203,25 @@ public class Person {
         this.secretIdentity = secretIdentity;
     }
 
+    public List<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
+    }
+
+    public void addArticle(Article article) {
+        if (articles == null) {
+            articles = new ArrayList<>();
+        }
+        articles.add(article);
+    }
+
     @Override
     public String toString() {
         return "[id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-                + ", secretIdentity=" + secretIdentity + ", pets=" + pets + "]";
+                + ", secretIdentity=" + secretIdentity + "]";
     }
 
 }

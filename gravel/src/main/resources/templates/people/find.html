@@ -25,8 +25,22 @@
                     <input type="hidden" th:name="action" value="pets" />
                     <h1>Find Pets Of Person</h1>
                     <div class="field-group">
-                        <label>Person Name: </label>
-                        <input type="text" th:name="search" placeholder="secret name" />
+                        <label>Owner Name: </label>
+                        <input type="text" th:name="search" placeholder="owner" />
+                    </div>
+                    <div class="field-group">
+                        <a class="btn action" th:href="@{/people/list}">back</a>
+                        <span class="col-5">
+                            <input class="confirm" type="submit" value="find" />
+                        </span>
+                    </div>
+                </form>
+                <form action="#" th:action="@{/people/find}" method="GET">
+                    <input type="hidden" th:name="action" value="articles" />
+                    <h1>Find Articles Of Author</h1>
+                    <div class="field-group">
+                        <label>Author: </label>
+                        <input type="text" th:name="search" placeholder="author" />
                     </div>
                     <div class="field-group">
                         <a class="btn action" th:href="@{/people/list}">back</a>
@@ -37,11 +51,11 @@
                     <div class="field-group">
                         <span></span>
                         <div>
-                            <span th:each="result : ${searchResults}" th:text="${result.toString()}"></span>
+                            <p th:each="result : ${searchResults}" th:text="${result.toString()}"></p>
                         </div>
                     </div>
                 </form>
-            </section>
+        </section>
         </div>
     </body>
 </html>

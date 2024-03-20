@@ -12,6 +12,8 @@ public interface PersonService {
     public int deleteMany(String whereColumn, String whereValue);
     public int deleteAll();
     public Person findById(long id);
+    public Person loadArticlesEagerByPersonId(long id);
     public List<Person> findAll();
     public List<Person> findByLastName(String lastName);
+    public Person findByFullName(String firstName, String lastName);
 }

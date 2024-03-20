@@ -67,7 +67,7 @@ CREATE TABLE auth_access_tuple (
       ON DELETE RESTRICT
       ON UPDATE RESTRICT,
 
-  PRIMARY KEY (entity_id, permission_id)  
+  PRIMARY KEY (entity_id, permission_id)
 );
 CREATE UNIQUE INDEX index_auth_access_tuple ON auth_access_tuple (entity_id, permission_id);
 

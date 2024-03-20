@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 
+import ch.black.gravel.daos.ArticleDAO;
 import ch.black.gravel.repositories.ContractRepository;
 import ch.black.gravel.services.CompanyService;
 import ch.black.gravel.services.PersonService;
@@ -34,14 +35,16 @@ public class GravelApplication {
 	public CommandLineRunner commandLineRunner(
 			PersonService personService, 
 			CompanyService companyService, 
-			ContractRepository contractRepository
+			ContractRepository contractRepository,
+			ArticleDAO articleDAO
 		){
 		return runner -> {
 			setupRunner = new DataSetupRunner();
 			setupRunner.run(
 				personService, 
 				companyService, 
-				contractRepository
+				contractRepository,
+				articleDAO
 			);
 		};
 	}

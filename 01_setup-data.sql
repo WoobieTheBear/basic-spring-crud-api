@@ -24,11 +24,16 @@ GRANT CREATE, USAGE ON SCHEMA black_data TO tutorial_user;
 --
 
 -- <START DROP ALL PREVIOUS DATA>
-DROP TABLE IF EXISTS secret_identity;
+-- [STEP I]: drop all tables with foreign keys
 DROP TABLE IF EXISTS pet;
 DROP TABLE IF EXISTS person;
-DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS join_author_article;
 DROP TABLE IF EXISTS workcontract;
+
+-- [STEP II]: drop all tables without foreign keys
+DROP TABLE IF EXISTS secret_identity;
+DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS article;
 
 
 
@@ -47,6 +52,43 @@ GRANT SELECT, UPDATE, USAGE ON SEQUENCE secret_identity_id_seq TO tutorial_user;
 
 -- Following line makes the person_id_seq start at 20000
 ALTER SEQUENCE IF EXISTS secret_identity_id_seq RESTART WITH 20000;
+
+
+
+-- <START MANY-TO-MANY ARTICLE SETUP>
+
+CREATE TABLE article (
+  id BIGSERIAL PRIMARY KEY,
+  content VARCHAR (1023) NOT NULL
+);
+
+-- Grant necessary permissions for JDBC to access table
+GRANT INSERT, UPDATE, SELECT, DELETE, TRUNCATE ON article TO tutorial_user;
+
+-- Configure the primary key sequence for person_id_seq
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE article_id_seq TO tutorial_user;
+
+-- Following line makes the person_id_seq start at 30000
+ALTER SEQUENCE IF EXISTS article_id_seq RESTART WITH 30000;
+
+
+
+-- <START COMPANY SETUP>
+
+CREATE TABLE company (
+  id BIGSERIAL PRIMARY KEY,
+  company_name VARCHAR (63) NOT NULL,
+  contact_email VARCHAR (255) UNIQUE NOT NULL
+);
+
+-- Grant necessary permissions for JDBC to access table
+GRANT INSERT, UPDATE, SELECT, DELETE, TRUNCATE ON company TO tutorial_user;
+
+-- Configure the primary key sequence for company_id_seq
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE company_id_seq TO tutorial_user;
+
+-- Following line makes the company_id_seq start at 1000
+ALTER SEQUENCE IF EXISTS company_id_seq RESTART WITH 1000;
 
 
 
@@ -77,51 +119,7 @@ ALTER SEQUENCE IF EXISTS person_id_seq RESTART WITH 10000;
 
 
 
--- <START ONE-TO-MANY PET SETUP>
-
-CREATE TABLE pet (
-  id BIGSERIAL PRIMARY KEY,
-  pet_name VARCHAR (255) NOT NULL,
-  species VARCHAR (255) NOT NULL,
-  person_id BIGINT,
-  CONSTRAINT person_fk
-    FOREIGN KEY(person_id)
-      REFERENCES person(id)
-      ON UPDATE NO ACTION
-      ON DELETE NO ACTION
-);
-
--- Grant necessary permissions for JDBC to access table
-GRANT INSERT, UPDATE, SELECT, DELETE, TRUNCATE ON pet TO tutorial_user;
-
--- Configure the primary key sequence for person_id_seq
-GRANT SELECT, UPDATE, USAGE ON SEQUENCE pet_id_seq TO tutorial_user;
-
--- Following line makes the person_id_seq start at 30000
-ALTER SEQUENCE IF EXISTS pet_id_seq RESTART WITH 30000;
-
-
-
--- <START COMPANY SETUP>
-
-CREATE TABLE company (
-  id BIGSERIAL PRIMARY KEY,
-  company_name VARCHAR (63) NOT NULL,
-  contact_email VARCHAR (255) UNIQUE NOT NULL
-);
-
--- Grant necessary permissions for JDBC to access table
-GRANT INSERT, UPDATE, SELECT, DELETE, TRUNCATE ON company TO tutorial_user;
-
--- Configure the primary key sequence for company_id_seq
-GRANT SELECT, UPDATE, USAGE ON SEQUENCE company_id_seq TO tutorial_user;
-
--- Following line makes the company_id_seq start at 1000
-ALTER SEQUENCE IF EXISTS company_id_seq RESTART WITH 1000;
-
-
-
--- <START CONTRACT SETUP>
+-- <START ONE-TO-MANY<->MANY-TO-ONE CONTRACT SETUP>
 
 CREATE TABLE workcontract (
   id BIGSERIAL PRIMARY KEY,
@@ -147,3 +145,47 @@ GRANT SELECT, UPDATE, USAGE ON SEQUENCE workcontract_id_seq TO tutorial_user;
 -- Following line makes the workcontract_id_seq start at 100000
 ALTER SEQUENCE IF EXISTS workcontract_id_seq RESTART WITH 100000;
 
+
+
+-- <START ONE-TO-MANY PET SETUP>
+
+CREATE TABLE pet (
+  id BIGSERIAL PRIMARY KEY,
+  pet_name VARCHAR (255) NOT NULL,
+  species VARCHAR (255) NOT NULL,
+  person_id BIGINT,
+  CONSTRAINT person_fk
+    FOREIGN KEY(person_id)
+      REFERENCES person(id)
+      ON UPDATE NO ACTION
+      ON DELETE NO ACTION
+);
+
+-- Grant necessary permissions for JDBC to access table
+GRANT INSERT, UPDATE, SELECT, DELETE, TRUNCATE ON pet TO tutorial_user;
+
+-- Configure the primary key sequence for person_id_seq
+GRANT SELECT, UPDATE, USAGE ON SEQUENCE pet_id_seq TO tutorial_user;
+
+-- Following line makes the person_id_seq start at 30000
+ALTER SEQUENCE IF EXISTS pet_id_seq RESTART WITH 30000;
+
+
+
+-- <START MANY-TO-MANY ARTICLE SETUP>
+
+CREATE TABLE join_author_article (
+  person_id BIGINT NOT NULL,
+  CONSTRAINT person_fk
+    FOREIGN KEY(person_id)
+      REFERENCES person(id),
+  article_id BIGINT NOT NULL,
+  CONSTRAINT article_fk
+    FOREIGN KEY(article_id)
+      REFERENCES article(id),
+  PRIMARY KEY (person_id, article_id)
+);
+CREATE UNIQUE INDEX index_join_author_article ON join_author_article (person_id, article_id);
+
+-- Grant necessary permissions for JDBC to access table
+GRANT INSERT, UPDATE, SELECT, DELETE, TRUNCATE ON join_author_article TO tutorial_user;

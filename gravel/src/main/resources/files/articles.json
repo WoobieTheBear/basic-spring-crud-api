@@ -1,0 +1,16 @@
+{
+    "data": [
+        {
+            "content": "On monday the 5th, there was a robbery in the gotham bank and several million dollars were stolen. The robbers got away and there were no casualties.",
+            "authors": [10008, 10009]
+        },
+        {
+            "content": "On monday the 8th, there were bombings in several stores and the gotham subway.",
+            "authors": [10007]
+        },
+        {
+            "content": "On friday the 12th, there have been several sightings of what spectators referred to as a giant bat.",
+            "authors": [10006, 10009, 10007]
+        }
+    ]
+}

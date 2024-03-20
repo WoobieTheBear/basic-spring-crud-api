@@ -31,8 +31,18 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    public Person loadArticlesEagerByPersonId(long id) {
+        return personDAO.loadArticlesEagerByPersonId(id);
+    }
+
+    @Override
     public List<Person> findByLastName(String lastName) {
         return personDAO.findByLastName(lastName);
+    }
+
+    @Override
+    public Person findByFullName(String firstName, String lastName) {
+        return personDAO.findByFullName(firstName, lastName);
     }
 
     @Override
