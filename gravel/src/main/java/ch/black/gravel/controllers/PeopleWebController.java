@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.black.gravel.daos.SecretIdentityDAO;
-import ch.black.gravel.GravelApplication;
 import ch.black.gravel.daos.ArticleDAO;
 import ch.black.gravel.daos.PetDAO;
 import ch.black.gravel.dtos.PersonDTO;
