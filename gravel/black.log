@@ -1,0 +1,205 @@
+2024-04-09T16:17:24.814+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 10832 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:17:24.821+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:17:24.821+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:17:30.778+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 6.34 seconds (process running for 7.369)
+2024-04-09T16:17:30.780+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:17:30.800+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:17:30.800+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:17:30.800+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:17:30.800+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:17:30.810+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:17:30.810+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:17:30.810+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:17:30.810+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:17:30.812+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:17:30.812+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:17:30.812+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:17:30.961+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:17:30.961+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:17:30.961+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:32:10.685+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 19804 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:32:10.685+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:32:10.685+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:32:15.344+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 4.962 seconds (process running for 5.61)
+2024-04-09T16:32:15.352+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:32:15.368+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:32:15.466+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:32:15.466+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:32:15.470+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:32:29.795+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 15712 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:32:29.795+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:32:29.795+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:32:34.458+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 4.956 seconds (process running for 5.602)
+2024-04-09T16:32:34.462+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:32:34.482+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:32:34.590+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:32:34.591+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:32:34.592+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:33:06.022+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 14944 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:33:06.022+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:33:06.022+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:33:10.422+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 4.7 seconds (process running for 5.356)
+2024-04-09T16:33:10.422+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:33:10.442+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:33:10.552+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:33:10.552+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:33:10.552+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:34:13.939+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 14740 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:34:13.939+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:34:13.942+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:34:18.676+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 5.021 seconds (process running for 5.696)
+2024-04-09T16:34:18.682+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:34:18.692+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:34:18.692+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:34:18.692+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:34:18.702+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:34:18.702+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:34:18.702+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:34:18.702+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:34:18.702+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:34:18.702+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:34:18.702+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:34:18.702+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:34:18.822+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:34:18.822+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:34:18.822+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:38:29.491+0200 [INFO] ch.black.gravel.GravelApplicationTests :: Starting GravelApplicationTests using Java 17.0.10 with PID 17984 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:38:29.491+0200 [DEBUG] ch.black.gravel.GravelApplicationTests :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:38:29.491+0200 [INFO] ch.black.gravel.GravelApplicationTests :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:38:33.912+0200 [INFO] ch.black.gravel.GravelApplicationTests :: Started GravelApplicationTests in 4.711 seconds (process running for 5.34)
+2024-04-09T16:38:33.912+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:38:59.331+0200 [INFO] ch.black.gravel.GravelApplicationTests :: Starting GravelApplicationTests using Java 17.0.10 with PID 11912 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:38:59.331+0200 [DEBUG] ch.black.gravel.GravelApplicationTests :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:38:59.331+0200 [INFO] ch.black.gravel.GravelApplicationTests :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:39:03.731+0200 [INFO] ch.black.gravel.GravelApplicationTests :: Started GravelApplicationTests in 4.71 seconds (process running for 5.356)
+2024-04-09T16:39:03.746+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:39:12.183+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 10848 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:39:12.183+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:39:12.191+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:39:16.838+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 4.96 seconds (process running for 5.614)
+2024-04-09T16:39:16.844+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:39:16.861+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:39:16.862+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:39:16.968+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:39:16.968+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:39:16.968+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:40:05.669+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 17552 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:40:05.670+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:40:05.671+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:40:10.395+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 5.025 seconds (process running for 5.695)
+2024-04-09T16:40:10.400+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:40:10.415+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:40:10.415+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:40:10.415+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:40:10.415+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:40:10.415+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:40:10.416+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:40:10.416+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:40:10.416+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:40:10.416+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:40:10.416+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:40:10.416+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:40:10.518+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:40:10.518+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:40:10.519+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:45:48.769+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 6988 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:45:48.769+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:45:48.769+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:45:53.408+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 4.97 seconds (process running for 5.637)
+2024-04-09T16:45:53.419+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:45:53.433+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:45:53.531+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:45:53.531+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:45:53.531+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:46:15.278+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 16372 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:46:15.278+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:46:15.280+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:46:19.721+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 4.738 seconds (process running for 5.405)
+2024-04-09T16:46:19.726+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:46:19.741+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:46:19.741+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:46:19.741+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:46:19.741+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:46:19.741+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:46:19.742+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:46:19.742+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:46:19.742+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:46:19.742+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:46:19.742+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:46:19.742+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:46:19.841+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:46:19.842+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:46:19.842+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:48:52.700+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Starting PeopleWebControllerTest using Java 17.0.10 with PID 15712 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:48:52.700+0200 [DEBUG] ch.black.gravel.controllers.PeopleWebControllerTest :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:48:52.700+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:48:57.370+0200 [INFO] ch.black.gravel.controllers.PeopleWebControllerTest :: Started PeopleWebControllerTest in 4.969 seconds (process running for 5.659)
+2024-04-09T16:48:57.376+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
+2024-04-09T16:48:57.405+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Dick, lastName=Grayson, email=dick.grayson@gotham-pd.com, secretIdentity=[id = 0, secretName = Robin]]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=James, lastName=Gordon, email=james.gordon@gotham-pd.com, secretIdentity=null]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Rahel, lastName=Daws, email=rahel.daws@test.com, secretIdentity=null]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Bruce, lastName=Wayne, email=bruce.wayne@wayne-enterprises.com, secretIdentity=[id = 0, secretName = Bat Man]]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Lucius, lastName=Fox, email=lucius.fox@wayne-enterprises.com, secretIdentity=null]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Aline, lastName=Mezger, email=aline.mezger@gravity.com, secretIdentity=null]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathaly, lastName=Gardener, email=nathaly.gardener@gravity.com, secretIdentity=null]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Alan, lastName=Newman, email=alan.newman@dito.com, secretIdentity=null]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Nathan, lastName=Neeson, email=n.neeson@hotmail.com, secretIdentity=null]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Darius, lastName=Anderson, email=darius.anderson@test.com, secretIdentity=null]
+2024-04-09T16:48:57.407+0200 [INFO] ch.black.util.DataSetupRunner :: Person created [id=0, firstName=Malcolm, lastName=Deichsler, email=m.deichsler@hotmail.com, secretIdentity=null]
+2024-04-09T16:48:57.507+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:48:57.507+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:48:57.507+0200 [INFO] ch.black.util.DataSetupRunner :: Article created null
+2024-04-09T16:49:05.416+0200 [INFO] ch.black.gravel.GravelApplicationTests :: Starting GravelApplicationTests using Java 17.0.10 with PID 13180 (started by ls in C:\Users\ls\Documents\basic-spring-crud-api\gravel)
+2024-04-09T16:49:05.416+0200 [DEBUG] ch.black.gravel.GravelApplicationTests :: Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-04-09T16:49:05.425+0200 [INFO] ch.black.gravel.GravelApplicationTests :: No active profile set, falling back to 1 default profile: "default"
+2024-04-09T16:49:09.806+0200 [INFO] ch.black.gravel.GravelApplicationTests :: Started GravelApplicationTests in 4.701 seconds (process running for 5.34)
+2024-04-09T16:49:09.815+0200 [INFO] ch.black.util.DataSetupRunner :: action="data-setup-started"
