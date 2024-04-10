@@ -145,14 +145,14 @@ public class PeopleWebController {
         return "people/form";
     }
 
-    @PostMapping("/addTitle")
-    public String addTitle(
+    @PostMapping("/addPet")
+    public String addPet(
         Model model,
         @ModelAttribute("person") PersonDTO personDTO,
         @ModelAttribute("petsDTO") PetsDTO petsDTO,
         @ModelAttribute("secretIdentity") SecretIdentityDTO identityDTO
     ) {
-        petsDTO.addTitle(new Pet("", ""));
+        petsDTO.addPet(new Pet("", ""));
 
         model.addAttribute("person", personDTO);
         model.addAttribute("petsDTO", petsDTO);
@@ -160,7 +160,7 @@ public class PeopleWebController {
         return "people/form";
     }
 
-    @PostMapping("/deleteTitle")
+    @PostMapping("/deletePet")
     public String deleteTitle(
         Model model,
         @RequestParam(value = "index", required = false) Integer index,

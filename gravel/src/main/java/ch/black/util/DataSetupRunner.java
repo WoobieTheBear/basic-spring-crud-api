@@ -33,7 +33,7 @@ public class DataSetupRunner {
         ContractRepository contractRepository,
         ArticleDAO articleDAO
     ) {
-        logger.info("action=\"data-setup-started\"");
+        logger.info("action='data-setup-started'");
         addPeople(personService);
         addCompanies(companyService);
         addContracts(personService, companyService, contractRepository);

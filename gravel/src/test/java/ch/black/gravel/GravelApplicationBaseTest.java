@@ -20,7 +20,7 @@ import ch.black.gravel.services.PersonService;
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = GravelWebTestConfig.class)
 @TestInstance(Lifecycle.PER_CLASS)
-class GravelApplicationTests {
+class GravelApplicationBaseTest {
 
     @Autowired
     private MockMvc mvc;

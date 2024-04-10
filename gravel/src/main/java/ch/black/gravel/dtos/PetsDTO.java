@@ -17,7 +17,7 @@ public class PetsDTO {
         this.pets = pets;
     }
 
-    public void addTitle(Pet pet) {
+    public void addPet(Pet pet) {
         if (pets == null) {
             pets = new ArrayList<>();
         }
