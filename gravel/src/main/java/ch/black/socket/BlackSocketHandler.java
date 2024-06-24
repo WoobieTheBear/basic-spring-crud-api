@@ -37,7 +37,7 @@ public class BlackSocketHandler extends TextWebSocketHandler {
         sessions.forEach(webSocketSession -> {
             try {
                 TimeZone tz = TimeZone.getTimeZone("CET");
-                DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH.SSS:mmXXX");
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm.SSSXXX");
                 df.setTimeZone(tz);
                 String nowAsISO = df.format(new Date());
                 TextMessage output = new TextMessage(nowAsISO + ": " + message.getPayload());
