@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:include="~{fragments.html :: head}"></th:block>
+        <title>The Black Chat</title>
+    </head>
+    <body>
+        <div class="page-container">
+            <nav th:replace="~{fragments.html :: navigation}"></nav>
+            <section>
+                <h1>The Black Chat</h1>
+                <p>The functionality below utilizes a web socket to enable real time communication.</p>
+                <div class="row col-8">
+                    <a id="connectbtn" class="btn action disabled">connect</a>
+                    <a id="disconnectbtn" class="btn danger">disconnect</a>
+                    <input class="colspan-5" id="messagefield" name="message" type="text" />
+                    <a id="sendbtn" class="btn action">send</a>
+                </div>
+                <div class="row col-1">
+                    <div id="socket_output"></div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

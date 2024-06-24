@@ -22,9 +22,11 @@
     --table-bg-color-title: #585858;
     --table-bg-color-odd: #2a2a2a;
     --table-bg-color-even: #353535;
-    --grid-vertical-gap: 0.4rem;
+    --grid-vertical-gap: 0.7rem;
     --grid-horizontal-gap: 0.8rem;
     --fast: 0.5s;
+    --sans: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    --monospace: 'Menlo', 'Monaco', monospace;
 }
 
 * {
@@ -33,7 +35,7 @@
 
 html,
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: var(--sans);
     font-size: 16px;
     margin: 0;
     padding: 0;
@@ -72,7 +74,7 @@ input[type="submit"]:not([data-no-btn]),
 a.btn,
 select,
 button {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: var(--sans);
     font-size: 1rem;
     cursor: pointer;
     border: 1px solid var(--btn-border-color);
@@ -100,7 +102,7 @@ button:hover {
 }
 
 input[data-no-btn] {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: var(--sans);
     font-weight: normal;
     font-size: 1rem;
     cursor: pointer;
@@ -257,12 +259,17 @@ h2 {
     margin: 2rem 0 0.4rem 0;
 }
 
+.row {
+    margin-top: var(--grid-vertical-gap);
+}
+
 .col-2,
 .col-3,
 .col-4,
 .col-5,
 .col-6,
 .col-7,
+.col-8,
 div.field-group {
     column-gap: var(--grid-horizontal-gap);
 }
@@ -297,6 +304,11 @@ div.field-group {
     grid-template-columns: repeat(7, 1fr);
 }
 
+.col-8 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}
+
 .colspan-2 {
     grid-column: span 2;
 }
@@ -321,6 +333,10 @@ div.field-group {
     grid-column: span 7;
 }
 
+.colspan-8 {
+    grid-column: span 8;
+}
+
 .page-container {
     max-width: var(--container-width);
     min-height: 100vh;
@@ -333,7 +349,7 @@ div.field-group {
 
 .error {
     color: var(--color-danger);
-    font-family: 'Menlo', 'Monaco', monospace;
+    font-family: var(--monospace);
 }
 
 .panel {

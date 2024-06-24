@@ -1,9 +1,4 @@
-console.log('script tag loaded');
-
-const initPage = (evt) => {
-    console.log('page loaded');
-    createNumberGroups();
-}
+import { socketSetup } from "./socket.mjs";
 
 const createNumberGroups = () => {
     const numberGroups = document.querySelectorAll('.number-group');
@@ -27,6 +22,12 @@ const createNumberGroups = () => {
         group.appendChild(more)
         console.log(group);
     })
+}
+
+const initPage = (evt) => {
+    console.log('page loaded');
+    createNumberGroups();
+    socketSetup();
 }
 
 window.onload = initPage;

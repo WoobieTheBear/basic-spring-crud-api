@@ -63,6 +63,8 @@ public class BlackSecurityConfig {
                 "/", "/signup", "/processSignup", "/accessDenied", "/css/**", "/js/**", "/img/**"
             ).permitAll()
             // [START] web paths
+            .requestMatchers(HttpMethod.GET, "/chat").authenticated()
+            .requestMatchers(HttpMethod.GET, "/chat-socket").authenticated()
             .requestMatchers(HttpMethod.GET, "/user/profile").authenticated()
             .requestMatchers(HttpMethod.GET, "/people/find**").hasAuthority(PermissionName.POWER.get())
             .requestMatchers(HttpMethod.GET, "/people/list").hasAuthority(PermissionName.USER.get())

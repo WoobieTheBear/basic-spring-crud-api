@@ -3,15 +3,15 @@
 
 <head th:fragment="head">
     <meta charset="UTF-8">
-    <title>The Black Page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
-    <script type="module" th:src="@{/js/loader.js}"></script>
+    <script type="module" th:src="@{/js/loader.mjs}"></script>
 </head>
 
 <body>
     <nav th:fragment="navigation">
-        <ul class="col-7">
+        <ul class="col-8">
             <li><a th:href="@{/}">Main</a></li>
+            <li><a th:href="@{/chat}">Chat</a></li>
             <li><a th:href="@{/people/list}">People</a></li>
             <li>
                 <a th:href="@{/companies/list}"
@@ -30,7 +30,8 @@
             </li>
             <li><a th:href="@{/user/profile}"
                     sec:authorize="isAuthenticated()"
-                >User</a></li>
+                >User</a>
+            </li>
             <li>
                 <form action="#" th:action="@{/logout}" method="POST">
                     <input type="submit" value="Logout" data-no-btn />

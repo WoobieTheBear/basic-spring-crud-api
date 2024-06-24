@@ -15,12 +15,14 @@ import ch.black.util.DataSetupRunner;
 @SpringBootApplication(
 	scanBasePackages = {
 		"ch.black.gravel",
+		"ch.black.socket",
 		"ch.black.util"
 	}
 )
 @EntityScan( 
 	basePackages = {
 		"ch.black.gravel",
+		"ch.black.socket",
 		"ch.black.util"
 	} 
 )

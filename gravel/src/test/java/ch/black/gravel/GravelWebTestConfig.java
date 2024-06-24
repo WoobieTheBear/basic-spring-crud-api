@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @ComponentScan({
     "ch.black.gravel",
+    "ch.black.socket",
     "ch.black.util"
 })
 @ContextConfiguration(
