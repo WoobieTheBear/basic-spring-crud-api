@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
+        <th:block th:include="~{fragments.html :: head}"></th:block>
         <title>The Black Page</title>
-        <th:block th:include="fragments.html :: head"></th:block>
     </head>
     <body>
         <div class="page-container">
@@ -13,24 +13,24 @@
                     <div th:object="${person}">
                         <input type="hidden" th:field="*{id}" />
                         <div class="field-group">
-                            <label>E-Mail: </label>
-                            <input type="email" th:field="*{email}" placeholder="email" />
+                            <label for="email">E-Mail: </label>
+                            <input type="email" name="email" th:field="*{email}" placeholder="email" />
                         </div>
                         <div th:if="${#fields.hasErrors('email')}" class="field-group">
                             <span></span>
                             <span th:errors="*{email}" class="error"></span>
                         </div>
                         <div class="field-group">
-                            <label>Firstname: </label>
-                            <input type="text" th:field="*{firstName}" placeholder="first name" />
+                            <label for="firstname">Firstname: </label>
+                            <input type="text" name="firstname" th:field="*{firstName}" placeholder="first name" />
                         </div>
                         <div th:if="${#fields.hasErrors('firstName')}" class="field-group">
                             <span></span>
                             <span th:errors="*{firstName}" class="error"></span>
                         </div>
                         <div class="field-group">
-                            <label>Lastname: </label>
-                            <input type="text" th:field="*{lastName}" placeholder="last name" />
+                            <label for="lastname">Lastname: </label>
+                            <input type="text" name="lastname" th:field="*{lastName}" placeholder="last name" />
                         </div>
                         <div th:if="${#fields.hasErrors('lastName')}" class="field-group">
                             <span></span>
@@ -39,14 +39,14 @@
                     </div>
                     <div th:object="${petsDTO}">
                         <div class="field-group">
-                            <label>pets: </label>
+                            <span>pets: </span>
                             <div class="col-5">
                                 <span class="colspan-4"></span>
                                 <button class="action" th:formaction="@{/people/addPet}">add</button>
                             </div>
                         </div>
                         <div class="field-group" th:each="title, item : *{pets}">
-                            <label></label>
+                            <span></span>
                             <div class="col-5">
                                 <input type="hidden" th:field="*{pets[__${item.index}__].id}" />
                                 <input class="colspan-2" th:field="*{pets[__${item.index}__].name}" placeholder="pet name" />
@@ -59,8 +59,8 @@
                     <div th:object="${secretIdentity}">
                         <input type="hidden" th:field="*{id}" />
                         <div class="field-group">
-                            <label>Secret Identity: </label>
-                            <input type="text" th:field="*{secretName}" placeholder="secret name" />
+                            <label for="secretname">Secret Identity: </label>
+                            <input type="text" name="secretname" th:field="*{secretName}" placeholder="secret name" />
                         </div>
                         <div th:if="${#fields.hasErrors('secretName')}" class="field-group">
                             <span></span>

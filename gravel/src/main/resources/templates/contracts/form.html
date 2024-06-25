@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
+        <th:block th:include="~{fragments.html :: head}"></th:block>
         <title>The Black Page</title>
-        <th:block th:include="fragments.html :: head"></th:block>
     </head>
     <body>
         <div class="page-container">
@@ -12,9 +12,9 @@
                 <form action="#" th:action="@{/workcontracts/save}" th:object="${contractDTO}" method="POST">
                     <input type="hidden" th:field="*{id}" />
                     <div class="field-group">
-                        <label>Person: </label>
+                        <label for="person">Person: </label>
                         <div>
-                            <select th:field="*{personId}">
+                            <select name="person" th:field="*{personId}">
                                 <option th:each="person : ${contractDTO.people}" 
                                     th:value="${(person != null) ? person.getId() : 0}" 
                                     th:text="${(person != null) ? person.getFullName() : ''}"></option>
@@ -26,9 +26,9 @@
                         <span th:errors="*{personId}" class="error"></span>
                     </div>
                     <div class="field-group">
-                        <label>Company: </label>
+                        <label for="company">Company: </label>
                         <div>
-                            <select th:field="*{companyId}">
+                            <select name="company" th:field="*{companyId}">
                                 <option th:each="company : ${contractDTO.companies}" 
                                     th:value="${(company != null) ? company.getId() : 0}" 
                                     th:text="${(company != null) ? company.getCompanyName() : ''}"></option>
@@ -40,17 +40,17 @@
                         <span th:errors="*{companyId}" class="error"></span>
                     </div>
                     <div class="field-group">
-                        <label>Job-Title: </label>
-                        <input type="text" th:field="*{title}" placeholder="title" />
+                        <label for="title">Job-Title: </label>
+                        <input name="title" type="text" th:field="*{title}" placeholder="title" />
                     </div>
                     <div th:if="${#fields.hasErrors('title')}" class="field-group">
                         <span></span>
                         <span th:errors="*{title}" class="error"></span>
                     </div>
                     <div class="field-group">
-                        <label>Salary: </label>
+                        <label for="salary">Salary: </label>
                         <span class="number-group">
-                            <input type="number" step="100" th:field="*{salary}" placeholder="salary" />
+                            <input name="salary" type="number" step="100" th:field="*{salary}" placeholder="salary" />
                         </span>
                     </div>
                     <div th:if="${#fields.hasErrors('salary')}" class="field-group">
@@ -58,9 +58,9 @@
                         <span th:errors="*{salary}" class="error"></span>
                     </div>
                     <div class="field-group">
-                        <label>Workload: </label>
+                        <label for="workload">Workload: </label>
                         <span class="number-group">
-                            <input type="number" step="10" th:field="*{contractWorkload}" placeholder="workload" />
+                            <input name="workload" type="number" step="10" th:field="*{contractWorkload}" placeholder="workload" />
                         </span>
                     </div>
                     <div th:if="${#fields.hasErrors('contractWorkload')}" class="field-group">

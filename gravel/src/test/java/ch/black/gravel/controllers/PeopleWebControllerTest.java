@@ -28,7 +28,7 @@ import ch.black.gravel.services.PersonService;
 @AutoConfigureMockMvc
 @ContextConfiguration(classes = GravelWebTestConfig.class)
 @TestInstance(Lifecycle.PER_CLASS)
-public class PeopleWebControllerTest {
+class PeopleWebControllerTest {
 
     @Autowired
     private WebApplicationContext waContext;
@@ -51,7 +51,7 @@ public class PeopleWebControllerTest {
     protected MockMvc mockMvc;
 
     @BeforeAll
-    public void setup() throws Exception{
+    public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(waContext).build();
     }
 

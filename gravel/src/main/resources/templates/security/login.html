@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
+        <th:block th:include="~{fragments.html :: head}"></th:block>
         <title>The Black Page</title>
-        <th:block th:include="fragments.html :: head"></th:block>
     </head>
     <body>
         <div class="page-container">
@@ -11,11 +11,11 @@
                 <div class="center-panel">
                     <form action="#" th:action="@{/processAuth}" method="POST">
                         <div class="field-group">
-                            <label>User: </label>
+                            <label for="username">User: </label>
                             <input type="text" name="username" placeholder="user" />
                         </div>
                         <div class="field-group">
-                            <label>Password: </label>
+                            <label for="password">Password: </label>
                             <input type="password" name="password" />
                         </div>
                         <div class="field-group">

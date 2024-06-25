@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
+        <th:block th:include="~{fragments.html :: head}"></th:block>
         <title>The Black Page</title>
-        <th:block th:include="fragments.html :: head"></th:block>
     </head>
     <body>
         <div class="page-container">
@@ -12,16 +12,16 @@
                 <form action="#" th:action="@{/companies/save}" th:object="${entry}" method="POST">
                     <input type="hidden" th:field="*{id}" />
                     <div class="field-group">
-                        <label>Company Name: </label>
-                        <input type="text" th:field="*{companyName}" placeholder="company name" />
+                        <label for="name">Company Name: </label>
+                        <input name="name" type="text" th:field="*{companyName}" placeholder="company name" />
                     </div>
                     <div th:if="${#fields.hasErrors('companyName')}" class="field-group">
                         <span></span>
                         <span th:errors="*{companyName}" class="error"></span>
                     </div>
                     <div class="field-group">
-                        <label>Company E-Mail: </label>
-                        <input type="text" th:field="*{contactEmail}" placeholder="E-Mail" />
+                        <label for="email">Company E-Mail: </label>
+                        <input name="email" type="text" th:field="*{contactEmail}" placeholder="E-Mail" />
                     </div>
                     <div th:if="${#fields.hasErrors('contactEmail')}" class="field-group">
                         <span></span>
