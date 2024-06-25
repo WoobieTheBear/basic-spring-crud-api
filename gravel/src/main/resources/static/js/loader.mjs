@@ -25,7 +25,6 @@ const createNumberGroups = () => {
 }
 
 const initPage = (evt) => {
-    console.log('page loaded');
     createNumberGroups();
     socketSetup();
 }
